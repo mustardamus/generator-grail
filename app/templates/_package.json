@@ -1,0 +1,20 @@
+{
+  "name": "{{name}}",
+  "version": "0.1.0",
+  "description": "{{description}}",
+  "author": "{{author}}",
+  "license": "{{license}}",
+  "main": "client/index.coffee",
+  "scripts": {
+    "start": "gulp server",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

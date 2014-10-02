@@ -1,0 +1,17 @@
+{
+  "name": "{{name}}",
+  "version": "0.1.0",
+  "authors": ["{{author}}"],
+  "description": "{{description}}",
+  "main": "client/index.html",
+  "license": "{{license}}",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
