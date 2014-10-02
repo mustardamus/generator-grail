@@ -1,0 +1,16 @@
+{
+  "name": "generator-grail",
+  "version": "0.1.0",
+  "description": "Generator for the last lazy-ass development environment you'll need. I swear.",
+  "main": "app/index.js",
+  "scripts": {},
+  "keywords": [ "yeoman-generator" ],
+  "author": "Sebastian Senf (me@akrasia.me)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "handlebars": "^2.0.0",
+    "yeoman-generator": "^0.17.7"
+  }
+}
