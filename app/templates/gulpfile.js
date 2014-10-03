@@ -106,11 +106,11 @@ gulp.task('test-watch', ['test'], function() {
   });
 });
 
-gulp.task('production', function() {
+gulp.task('production', ['html'], function() {
   production = true;
-  jsBundling();
+  jsBundling(jsBundle, destDir);
   cssBundling();
-  imgBundling();
+  imgProcessing();
 });
 
 gulp.task('watch', ['browserify-watch'], function() {
