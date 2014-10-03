@@ -15,6 +15,7 @@ module.exports =
     { fileIn: 'client/modules/layout/module.coffee' }
     { fileIn: 'client/modules/layout/style.styl' }
     { fileIn: 'test/client/index.coffee' }
+    { fileIn: 'test/client/modules/layout.coffee' }
   ]
 
   compile: (files, config) ->
