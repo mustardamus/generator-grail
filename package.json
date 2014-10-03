@@ -4,11 +4,14 @@
   "description": "Generator for the last lazy-ass development environment you'll need. I swear.",
   "main": "app/index.js",
   "scripts": {},
-  "keywords": [ "yeoman-generator" ],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "author": "Sebastian Senf (me@akrasia.me)",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "chalk": "^0.5.1",
     "coffee-script": "^1.8.0",
     "handlebars": "^2.0.0",
     "yeoman-generator": "^0.17.7"

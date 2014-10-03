@@ -1,4 +1,5 @@
 yeoman       = require('yeoman-generator')
+chalk        = require('chalk')
 prompts      = require('./prompts')
 templates    = require('./templates')
 dependencies = require('./dependencies')
@@ -27,4 +28,6 @@ module.exports = yeoman.generators.Base.extend
     @npmInstall gulpDeps.concat(otherDeps), { 'save-dev': true }, done
 
   end: ->
-    @log 'what is next? write sub-generators.'
+    @log chalk.yellow('Done! Now you have a nice development environment you can hack on.')
+    @log chalk.yellow('What is next? You can install good tools to start with by running the command:')
+    @log chalk.magenta('  yo grail:extend')

@@ -165,12 +165,11 @@ with Browserify you can simply `require()` the modules you want to use:
     layout = new Layout
 
 It is recommended to `require()` third party dependencies in the modules rather
-than having globals. But if there is no other way, or you like shortcuts, you
-can define globals like so:
+than having globals. But if you install the libraries with Bower, the respective
+global will be defined without declaring it:
 
-    window.$ = require('jquery')
-
-`$` is then available in the modules without initializing it again. Old school.
+    require('zepto')   # $ is globally defined
+    require('ractive') # Ractive is globally defined
 
 ### Stylesheet entry point - `./client/index.styl`
 
@@ -257,3 +256,41 @@ changes, run:
 ### Generate a new Module
 
 TBD.
+
+
+## Workflow
+
+### Using third party Scripts
+
+Third party libraries can be either installed with NPM or Bower. In the end, you
+just need to `require()` the library.
+
+#### NPM
+
+    npm install moment --save
+
+#### Bower
+
+    bower install zepto --save
+
+Then you can require the libraries wherever you want (usually in the Module):
+
+    $      = require('zepto')
+    moment = require('moment')
+
+#### Manually
+
+In the rare case you can't install a library from NPM or Bower, you also can
+`require()` the `.js` from everywhere:
+
+    lib = require('../path/to/lib.js')
+
+### Using third party Styles
+
+Install it via Bower:
+
+    bower install foundation --save
+
+And `@import` it in `./client/index.styl`:
+
+    @import '../bower_components/foundation/css/foundation.css'

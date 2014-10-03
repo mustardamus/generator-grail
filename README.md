@@ -6,3 +6,4 @@
   - License file
   - Changelog file
   - Small Readme for the generator
+  - additional gulp task for copy fonts
