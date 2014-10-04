@@ -171,6 +171,9 @@ global will be defined without declaring it:
     require('zepto')   # $ is globally defined
     require('ractive') # Ractive is globally defined
 
+However, if you declare it this way your tests may brake because they are run in
+Node.js by default (todo: run them in PhantomJS).
+
 ### Stylesheet entry point - `./client/index.styl`
 
 Here you initialize stylesheets, third party stylesheets and variables. Stylus

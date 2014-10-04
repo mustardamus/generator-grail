@@ -13,6 +13,10 @@ module.exports = yeoman.generators.Base.extend
       done()
 
   configuring: ->
+    dirArr     = process.cwd().split('/')
+    currentDir = dirArr[dirArr.length - 1]
+
+    @config.answers.name  = currentDir
     @config.answers.tools = {}
     @config.answers.bower = []
     @config.answers.npm   = []
@@ -30,17 +34,14 @@ module.exports = yeoman.generators.Base.extend
     templates = []
 
     templates.push('client/index.styl') if tools.foundation or tools.fontawesome
-    templates.push('client/index.coffee') if tools.zepto or tools.ractive
-    templates.push('test/client/modules/layout.coffee') if tools.cheerio
+    templates.push('client/modules/layout/module.coffee') if tools.ractive
+    templates.push('test/client/modules/layout.coffee') if tools.cheerio or tools.ractive
 
     for file in templates
       content  = @src.read(file)
       template = Handlebars.compile(content)
 
       @dest.write file, template(@config.answers)
-
-    if @config.answers.tools.fontawesome
-      @log 'extend gulpfile with copy font task'
 
   install:
     bowerInstall: ->
