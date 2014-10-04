@@ -258,7 +258,12 @@ changes, run:
 
 ### Generate a new Module
 
-TBD.
+You can generate the parts of a Module (Script, Template, Style, Test) with this
+command:
+
+    yo grail:create
+
+You will be prompted for the name and which parts you like to create.
 
 
 ## Workflow

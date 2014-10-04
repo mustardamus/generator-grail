@@ -1,8 +1,6 @@
 yeoman     = require('yeoman-generator')
-fs         = require('fs')
 Handlebars = require('handlebars')
 prompts    = require('./prompts')
-templates  = require('../app/templates')
 
 module.exports = yeoman.generators.Base.extend
   prompting: ->

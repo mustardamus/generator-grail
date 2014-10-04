@@ -28,6 +28,9 @@ module.exports = yeoman.generators.Base.extend
     @npmInstall gulpDeps.concat(otherDeps), { 'save-dev': true }, done
 
   end: ->
-    @log chalk.yellow('Done! Now you have a nice development environment you can hack on.')
+    @log chalk.yellow('\nDone! Now you have a nice development environment you can hack on.')
     @log chalk.yellow('What is next? You can install good tools to start with by running the command:')
     @log chalk.magenta('  yo grail:extend')
+
+    @log chalk.yellow('\nTo create a Module (Script, Style, Template and/or Test) run the command:')
+    @log chalk.magenta('  yo grail:create')
