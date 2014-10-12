@@ -15,6 +15,7 @@ var html2js     = require('html2js-browserify');
 var debowerify  = require('debowerify');
 var deamdify    = require('deamdify');
 var watchify    = require('watchify');
+var chokidar    = require('chokidar');
 var browserSync = require('browser-sync');
 
 var port       = 7891;
@@ -116,7 +117,15 @@ gulp.task('production', ['html'], function() {
 gulp.task('watch', ['browserify-watch'], function() {
   gulp.watch(srcDir + '/*.html',      ['html', browserSync.reload]);
   gulp.watch(srcDir + '/images/**/*', ['images', browserSync.reload]);
-  gulp.watch(srcDir + '/**/*.styl',   ['stylus']);
+
+  chokidar.watch([srcDir + '/index.styl', srcDir + '/components'])
+    .on('all', function(event, path) {
+      var ext = path.substr(path.length - 5);
+
+      if((event === 'add' || event === 'change') && ext === '.styl') {
+        cssBundling();
+      }
+    });
 });
 
 gulp.task('build', ['html', 'browserify', 'images', 'stylus']);

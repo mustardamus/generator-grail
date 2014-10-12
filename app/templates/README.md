@@ -187,6 +187,11 @@ To import a module:
 
     @import './modules/layout/style'
 
+Note that you don't need to include every single Module style since by default
+every style is imported:
+
+    @import './modules/**/style'
+
 If you define variables, you can use them in your imported modules:
 
     backgroundColor = #eee
