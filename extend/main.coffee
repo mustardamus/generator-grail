@@ -1,11 +1,24 @@
-yeoman     = require('yeoman-generator')
+yeoman = require('yeoman-generator')
+chalk  = require('chalk')
 
 module.exports = yeoman.generators.Base.extend
   writing: ->
-    # append readme to dest readme
-    # update index.styl
-    # update index.coffee
-    # write layout component and test
+    destReadme = @dest.read('README.md')
+    srcReadme  = @src.read('README.md')
+    filesArr   = [
+      'client/index.coffee'
+      'client/index.styl'
+      'client/components/layout/index.coffee'
+      'client/components/layout/style.styl'
+      'client/components/layout/template.html'
+      'test/client/index.coffee'
+      'test/client/components/layout.coffee'
+    ]
+
+    @dest.write 'README.md', "#{destReadme}\n\n#{srcReadme}"
+
+    for filePath in filesArr
+      @src.copy filePath, filePath
 
   install:
     bowerInstall: ->
@@ -19,3 +32,6 @@ module.exports = yeoman.generators.Base.extend
     npmDevInstall: ->
       done = @async()
       @npmInstall ['cheerio', 'should'], { saveDev: true }, done
+
+  end: ->
+    @log chalk.yellow('\nSweet, everything installed and generated!')
