@@ -14,16 +14,14 @@ module.exports = yeoman.generators.Base.extend
   writing: ->
     name = @config.answers.name
 
-    for modulePart in @config.answers.moduleParts
-      content  = @src.read(modulePart)
+    for componentPart in @config.answers.componentParts
+      content  = @src.read(componentPart)
       template = Handlebars.compile(content)
-      destPath = "client/modules/#{name}/#{modulePart}"
+      destPath = "client/components/#{name}/#{componentPart}"
       content  = template(@config.answers)
-      content  = content.split('<<').join('{{')
-      content  = content.split('>>').join('}}') # >:)
 
-      if modulePart is 'test.coffee'
-        destPath = "test/client/modules/#{name}.coffee"
+      if componentPart is 'test.coffee'
+        destPath = "test/client/components/#{name}.coffee"
 
       @dest.write destPath, content
 
@@ -32,11 +30,10 @@ module.exports = yeoman.generators.Base.extend
 
     @log chalk.yellow('\nSweet, everything generated!')
 
-    @log chalk.yellow('\nTo include your Module code do (in ./client/index.coffee or anywhere in your app):')
-    @log chalk.magenta("  Module = require('./#{name}/module')")
+    @log chalk.yellow('\nTo include your Component code do (in ./client/index.coffee or anywhere in your app):')
+    @log chalk.magenta("  Component = require('./components/#{name}')")
 
-    @log chalk.yellow('\nTo include your Module style do (in ./client/index.styl):')
-    @log chalk.magenta("  @import './modules/#{name}/style'")
+    @log chalk.yellow('\nThe Component Style is automatically included (in ./client/index.styl):')
 
-    @log chalk.yellow('\nTo include the Module test do (in ./test/client/index.coffee):')
-    @log chalk.magenta("  require('./modules/#{name}')")
+    @log chalk.yellow('\nTo include the Component test do (in ./test/client/index.coffee):')
+    @log chalk.magenta("  require('./components/#{name}')")
