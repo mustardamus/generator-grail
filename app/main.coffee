@@ -32,5 +32,5 @@ module.exports = yeoman.generators.Base.extend
     @log chalk.yellow('What is next? You can install good tools to start with by running the command:')
     @log chalk.magenta('  yo grail:extend')
 
-    @log chalk.yellow('\nTo create a Module (Script, Style, Template and/or Test) run the command:')
+    @log chalk.yellow('\nTo create a Component (Script, Style, Template and/or Test) run the command:')
     @log chalk.magenta('  yo grail:create')

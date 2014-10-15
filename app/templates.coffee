@@ -11,11 +11,7 @@ module.exports =
     { fileIn: 'client/index.html' }
     { fileIn: 'client/index.coffee' }
     { fileIn: 'client/index.styl' }
-    { fileIn: 'client/modules/layout/template.html' }
-    { fileIn: 'client/modules/layout/module.coffee' }
-    { fileIn: 'client/modules/layout/style.styl' }
     { fileIn: 'test/client/index.coffee' }
-    { fileIn: 'test/client/modules/layout.coffee' }
   ]
 
   compile: (files, config) ->

@@ -17,5 +17,5 @@ module.exports =
     deps
 
   otherNpmDependencies: [ # dependencies needed but not required in gulpfile
-    'should'
+    # 'should'
   ]

@@ -1,2 +1,1 @@
-Layout = require('./modules/layout/module')
-layout = new Layout
+console.log 'Lets continue the search for the holy grail.'
