@@ -1,18 +1,8 @@
-$      = require('cheerio')
-should = require('should')
-Module = require('../../../client/modules/{{name}}/module')
+$         = require('cheerio')
+should    = require('should')
+Component = require('../../../client/components/{{name}}')
 
-{{name}} = new Module
+{{name}} = new Component
 
-describe '{{name}} Module', ->
-  it 'should have the corrent initial data', ->
-    {{name}}.data.on.should.equal false
-
-  it 'should have the correct template', ->
-    $('.{{name}}', {{name}}.toHTML()).html().should.equal '<span class="on">On</span> <span class="off">Off</span>'
-
-  it 'should toggle the data', ->
-    {{name}}.render()
-    {{name}}.fire 'toggle'
-
-    {{name}}.data.on.should.equal true
+describe '{{name}} Component', ->
+  it 'should have some tests', ->
