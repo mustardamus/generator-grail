@@ -191,7 +191,7 @@ To import a module style:
     @import './components/post/style'
 
 Note that you don't need to include every single Component style since by
-default every style `*.styl` from the `./client/components` is imported.
+default every `style.styl` from the `./client/components` is imported.
 
 If you define variables, you can use them in your imported components:
 

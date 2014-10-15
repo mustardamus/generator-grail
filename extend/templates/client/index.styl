@@ -1,11 +1,14 @@
-{{#if tools.foundation}}
 @import '../bower_components/foundation/css/normalize.css'
 @import '../bower_components/foundation/css/foundation.css'
-{{/if}}
-{{#if tools.fontawesome}}
-@import '../bower_components/fontawesome/css/font-awesome.css'
-{{/if}}
+@import './components/**/style'
 
-backgroundColor = #eee
+linkColor = red
 
-@import './modules/**/style'
+body
+  background: white
+
+a
+  color: linkColor !important
+
+  &:hover
+    text-decoration: underline

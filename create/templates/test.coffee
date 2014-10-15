@@ -1,8 +1,6 @@
 $         = require('cheerio')
 should    = require('should')
-Component = require('../../../client/components/{{name}}')
+component = require('../../../client/components/{{name}}')
 
-{{name}} = new Component
-
-describe '{{name}} Component', ->
+describe '{{name}} component', ->
   it 'should have some tests', ->
