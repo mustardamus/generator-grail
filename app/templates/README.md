@@ -8,8 +8,8 @@ Latest and greatest in JavaScript development. This is only a development
 environment and not a framework. You can use your front-end framework of
 choice.
 
-This environment is intended to be used in a modular way. Everything is a Module
-and should work and be testable independently.
+This environment is intended to be used in a modular way. Everything is a
+Component and should work and be testable independently.
 
 Generated with the [Grail Generator](https://github.com/mustardamus/generator-grail)
 for [Yeoman](http://yeoman.io/).
@@ -60,7 +60,14 @@ Styles are written mainly in [Stylus](https://learnboost.github.io/stylus/).
 
 Watching for file changes is crucial if you pre-compile the Scripts and Styles.
 For the Script re-bundle [Watchify](https://github.com/substack/watchify) is in
-charge. For the rest of the files (HTML, Styles, Images) it uses
+charge.
+
+Since the Styles are not in the JS bundle,
+[Chokidar](https://github.com/paulmillr/chokidar) is used to watch and rebuild
+them. `gulp.watch` isn't used there, since it does not pick up newly created
+files.
+
+For the rest of the files (HTML, Images) it uses
 [gulp.watch](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglob-opts-tasks).
 
 ### Serving
@@ -71,7 +78,7 @@ automatically reloaded if Scripts or Styles are changing.
 
 ### Testing
 
-Module tests written in CoffeeScript, bundled by Browserify and run by
+Component tests written in CoffeeScript, bundled by Browserify and run by
 [Mocha](https://visionmedia.github.io/mocha/) with
 [Should.js](https://github.com/visionmedia/should.js) as assertion library.
 
@@ -122,7 +129,7 @@ reload.
 
 ### `gulp test`
 
-Bundles the Application Modules and Tests together and run them in Mocha.
+Bundles the Application Components and Tests together and run them in Mocha.
 
 ### `gulp test-watch`
 
@@ -144,32 +151,28 @@ Run this task if you want to release the Application for the audiences.
 
 ## Application Structure
 
-This is a one page application. It has three different entry points and one
-default Layout module.
+This is a one page application. It has three different entry points.
 
 ### HTML entry point - `./client/index.html`
 
 This is your typical `index.html` page which is loaded first. It has references
 to the Script and Stylesheet entry points.
 
-If you'd like to add static content to this page, go ahead. But usually you
-don't need to touch this file and add the HTML structure of your application to
-`./client/modules/layout/template.html`.
+Markup that is initially loaded (the Layout), is stored here.
 
 ### Script entry point - `./client/index.coffee`
 
-Here you initialize modules, like the layout. Since the Script Bundle is packed
+Here you initialize modules. Since the Script Bundle is packed
 with Browserify you can simply `require()` the modules you want to use:
 
-    Layout = require('./modules/layout/module')
+    Layout = require('./components/layout/module')
     layout = new Layout
 
-It is recommended to `require()` third party dependencies in the modules rather
+It is recommended to `require()` third party dependencies in the components rather
 than having globals. But if you install the libraries with Bower, the respective
 global will be defined without declaring it:
 
     require('zepto')   # $ is globally defined
-    require('ractive') # Ractive is globally defined
 
 However, if you declare it this way your tests may brake because they are run in
 Node.js by default (todo: run them in PhantomJS).
@@ -183,70 +186,69 @@ For third party styles, include a `.css` file in a relative path:
 
     @import '../bower_components/foundation/css/foundation.css'
 
-To import a module:
+To import a module style:
 
-    @import './modules/layout/style'
+    @import './components/layout/style'
 
-Note that you don't need to include every single Module style since by default
-every style is imported:
+Note that you don't need to include every single Component style since by default
+every style with the name `style.styl` from the `./client/components` is imported.
 
-    @import './modules/**/style'
-
-If you define variables, you can use them in your imported modules:
+If you define variables, you can use them in your imported components:
 
     backgroundColor = #eee
 
-And in `./client/modules/layout/style.styl`:
+And in `./client/components/layout/style.styl`:
 
     body
       background: backgroundColor
 
 
-## Module Structure
+## Component Structure
 
-A module can have three different things: A Script, a Template, and a Style. All
+A component can have three different things: A Script, a Template, and a Style. All
 three are optional, since it's in your hands how you initialize each part of a
-module.
+component.
 
 ### Naming Convention
 
 Again, you can name them like you want, really. I recommend this structure:
 
-    ./client/modules/[moduleName]
-      /module.coffee
+    ./client/components/[componentsName]
+      /index.coffee
       /template.html
       /style.styl
 
 Why this naming? You can leave out the file extension when `require()`ing them
-(which would not possible if every module-part has the same name):
+(which would not possible if every component-part has the same name):
 
-    module   = require('../layout/module')
-    template = require('./template')
+    component = require('../layout')
+    template  = require('./template')
 
-With the `moduleName` as identifier, you describe with the filename which part
-of the module it is: `layout/module`, `layout/template`, `layout/style`.
+With the `componentName` as identifier, and `index.coffee` as Script entry point,
+you describe with the filename which part
+of the component you want to `require()`: `layout`, `layout/template`, `layout/style`.
 
 A disadvantage of this method is that it might not be clear if you are editing
-multiple modules in your editor. But you should work on one module at a time
+multiple components in your editor. But you should work on one component at a time
 anyway.
 
-### Testing a Module
+### Testing a Component
 
-You can and should test your Modules. Just like the Application Script Entry
+You can and should test your Components. Just like the Application Script Entry
 Point, the Tests have a Entry Point too in `./test/client/index.coffee`. There
 you `require()` the tests you write:
 
-    require('./modules/layout')
+    require('./components/layout')
 
-Then just create the Module Test in a subfolder:
-`./test/client/modules/layout.coffee`:
+Then just create the Component Test in a subfolder:
+`./test/client/components/layout.coffee`:
 
     should = require('should')
 
-    Layout = require('../../../client/modules/layout/module')
+    Layout = require('../../../client/components/layout')
     layout = new Layout
 
-    describe 'Layout Module', ->
+    describe 'Layout Component', ->
       it 'should have the correct template', ->
         layout.template.should.equal '<h1>grailtest</h1>\n'
 
@@ -261,10 +263,10 @@ changes, run:
 
     gulp test-watch
 
-### Generate a new Module
+### Generate a new Component
 
-You can generate the parts of a Module (Script, Template, Style, Test) with this
-command:
+You can generate the parts of a Component (Script, Template, Style, Test) with
+this command:
 
     yo grail:create
 
@@ -286,7 +288,7 @@ just need to `require()` the library.
 
     bower install zepto --save
 
-Then you can require the libraries wherever you want (usually in the Module):
+Then you can require the libraries wherever you want (usually in the Component):
 
     $      = require('zepto')
     moment = require('moment')
