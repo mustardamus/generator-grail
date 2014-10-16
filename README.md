@@ -17,8 +17,6 @@ it do:
     mkdir grailtest
     cd grailtest
     yo grail
-    npm install
-    bower install
 
 Check out the
 [README.md](https://github.com/mustardamus/generator-grail/blob/master/app/templates/README.md)
