@@ -41,6 +41,11 @@ Foundation also offers a bunch of jQuery Plugins. Included by default in
 `./client/index.styl` is the Base Plugin and the Reveal (Modal) Plugin. Extend
 the list as needed to keep the bundle size to a minimum.
 
+### Font Awesome
+
+Quickly use loads of font icons with
+[Font Awesome](https://fortawesome.github.io/Font-Awesome/icon/).
+
 ### Fastclick
 
 [FastClick](https://github.com/ftlabs/fastclick) library for eliminating the

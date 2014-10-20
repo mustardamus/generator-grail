@@ -23,7 +23,7 @@ module.exports = yeoman.generators.Base.extend
   install:
     bowerInstall: ->
       done = @async()
-      @bowerInstall ['foundation'], { save: true }, done
+      @bowerInstall ['foundation', 'fontawesome'], { save: true }, done
 
     npmInstall: ->
       done = @async()

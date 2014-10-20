@@ -1,14 +1,10 @@
 @import '../bower_components/foundation/css/normalize.css'
 @import '../bower_components/foundation/css/foundation.css'
-@import './components/**/style'
+@import '../bower_components/fontawesome/css/font-awesome.css'
 
-linkColor = red
+backgroundColor = white
 
 body
-  background: white
+  background: backgroundColor
 
-a
-  color: linkColor !important
-
-  &:hover
-    text-decoration: underline
+@import './components/**/style'

@@ -11,7 +11,7 @@ module.exports =
 
   ready: ->
     router = new Router
-      '/:page': (route) ->
+      '/:page': (route) =>
         console.log 'do something on route', route
 
-    router.init()
+    router.init('/')
