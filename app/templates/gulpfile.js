@@ -75,6 +75,11 @@ gulp.task('html', function() {
     .pipe(gulp.dest(destDir));
 });
 
+gulp.task('fonts', function() {
+  gulp.src('./bower_components/fontawesome/fonts/*')
+    .pipe(gulp.dest(destDir + '/fonts'));
+});
+
 gulp.task('stylus', cssBundling);
 gulp.task('images', imgProcessing);
 

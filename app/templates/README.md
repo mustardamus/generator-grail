@@ -91,6 +91,11 @@ Source of all tasks is `./client` and destination is `./public`.
 
 Copies the HTML Entry Point.
 
+### `gulp fonts`
+
+Copies fonts. This tasks copies the fonts of Font Awesome by default, but note
+that you need to run `yo grail:extend`, so the fonts are available.
+
 ### `gulp stylus`
 
 Bundles the Style Entry Point with Stylus. Also prefix CSS3 properties with
