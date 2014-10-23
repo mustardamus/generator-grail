@@ -6,7 +6,7 @@
   "license": "{{license}}",
   "main": "client/index.coffee",
   "scripts": {
-    "start": "gulp server",
+    "start": "./node_modules/coffeeify/node_modules/coffee-script/bin/coffee ./server/index.coffee",
     "test": "gulp test"
   },
   "repository": {
