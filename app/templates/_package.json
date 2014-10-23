@@ -6,7 +6,8 @@
   "license": "{{license}}",
   "main": "client/index.coffee",
   "scripts": {
-    "start": "./node_modules/coffeeify/node_modules/coffee-script/bin/coffee ./server/index.coffee",
+    "start": "forever start -c coffee --watchDirectory ./server server/index.coffee",
+    "stop": "forever stop server/index.coffee",
     "test": "gulp test"
   },
   "repository": {
