@@ -112,7 +112,7 @@ gulp.task('test-watch', ['test'], function() {
   });
 });
 
-gulp.task('production', ['html'], function() {
+gulp.task('production', ['build'], function() {
   production = true;
   jsBundling(jsBundle, destDir);
   cssBundling();
@@ -133,5 +133,5 @@ gulp.task('watch', ['browserify-watch'], function() {
     });
 });
 
-gulp.task('build', ['html', 'browserify', 'images', 'stylus']);
+gulp.task('build', ['html', 'browserify', 'images', 'stylus', 'fonts']);
 gulp.task('default', ['build']);
