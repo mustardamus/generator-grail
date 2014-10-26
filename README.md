@@ -29,6 +29,13 @@ for an app to see what you'll get.
 Check out the [README.md](https://github.com/mustardamus/generator-grail/blob/master/extend/templates/README.md)
 section for extending and see what you'll get.
 
+## Extend the app with a server
+
+    yo grail:server
+
+Check out the [README.md](https://github.com/mustardamus/generator-grail/blob/master/server/templates/README.md)
+section for extending and see what you'll get. [TODO]
+
 ## Generate a component
 
     yo grail:create
