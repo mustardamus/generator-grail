@@ -218,7 +218,7 @@ a component.
 
 Again, you can name them like you want, really. I recommend this structure:
 
-    ./client/components/[componentName]
+    ./client/components/[component-name]
       /index.coffee
       /template.html
       /style.styl
@@ -229,7 +229,7 @@ Why this naming? You can leave out the file extension when `require()`ing them
     post     = require('../post')    # respectively index.coffee
     template = require('./template')
 
-With the `componentName` as identifier, and `index.coffee` as Script entry
+With the `component-name` as identifier, and `index.coffee` as Script entry
 point, you describe with the filename which part of the component you want to
 `require()`: `post` (respectively `index.coffee`), `post/template` and
 `post/style`.
@@ -268,8 +268,8 @@ change, run:
 
 ### Generate a new Component
 
-You can generate the parts of a Component (Script, Template, Style, Test) with
-this command:
+You can generate the parts of a Component
+(Script, Template, Style, Test, Documentation) with this command:
 
     yo grail:create
 
