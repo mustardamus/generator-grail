@@ -5,7 +5,6 @@ var prefix      = require('gulp-autoprefixer');
 var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var csso        = require('gulp-csso');
-var imagemin    = require('gulp-imagemin');
 var mocha       = require('gulp-spawn-mocha');
 var source      = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer');
@@ -62,7 +61,7 @@ var cssBundling = function() {
 
 var imgProcessing = function() {
   gulp.src(srcDir + '/images/**')
-    .pipe(production ? imagemin() : gutil.noop())
+    //.pipe(production ? imagemin() : gutil.noop())
     .pipe(gulp.dest(destDir + '/images/'));
 };
 
