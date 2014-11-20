@@ -4,9 +4,9 @@ module.exports =
   compiled: ->
     router = new Router
       '': =>
-        @$root.currentPage = 'home'
+        @$root.$data.currentPage = 'home'
 
       '/:page': (route) =>
-        @$root.currentPage = route
+        @$root.$data.currentPage = route
 
     router.init('/')

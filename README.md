@@ -41,3 +41,7 @@ section for extending and see what you'll get. [TODO]
     yo grail:create
 
 You will be prompted with a couple of stuff.
+
+## TODO
+
+  - make tests for the $root and router components

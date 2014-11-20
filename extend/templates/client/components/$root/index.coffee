@@ -8,7 +8,8 @@ module.exports =
     router: require('../router')
 
   compiled: ->
-    forwardEvents = [ # events that should be broadcasted to all components
+    window.data   = @$data  # to inspect the current state in the browser
+    forwardEvents = [       # events that should be broadcasted to all components
       'event:name'
     ]
 

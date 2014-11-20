@@ -7,6 +7,6 @@ module.exports =
   data: ->
     currentPage: ''
 
-  ready: ->
+  compiled: ->
     @$root.$watch 'currentPage', (page) =>
       @$data.currentPage = page
