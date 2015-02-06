@@ -1,7 +1,12 @@
 module.exports =
   replace:  true
   template: require('./template')
+
+  components: {}
+
   data: ->
 
-  compiled: ->
-    # http://vuejs.org/api/instantiation-options.html
+  ready: ->
+
+  methods:
+    onClick: (e) ->
