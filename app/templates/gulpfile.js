@@ -111,7 +111,7 @@ gulp.task('test-watch', ['test'], function() {
   });
 });
 
-gulp.task('production', ['build'], function() {
+gulp.task('production', function() {
   production = true;
   jsBundling(jsBundle, destDir);
   cssBundling();
