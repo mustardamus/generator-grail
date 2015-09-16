@@ -42,6 +42,11 @@ var jsTestBundle = defineBundle(testDir + '/index.coffee');
 
 var jsBundling = function(bundle, outDir) {
   return bundle.bundle()
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red('Coffee Script Error'));
+      console.log(err);
+      this.emit('end');
+    })
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(production ? uglify() : gutil.noop())
