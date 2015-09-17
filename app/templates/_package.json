@@ -6,8 +6,8 @@
   "license": "{{license}}",
   "main": "client/index.coffee",
   "scripts": {
-    "start": "forever start -c coffee --watch --watchDirectory=\"server\" server/index.coffee",
-    "stop": "forever stop server/index.coffee",
+    "start": "forever -c coffee -f -m 3 -w --watch --watchDirectory=\"server\" server/index.coffee",
+    "stop": "",
     "test": "gulp test"
   },
   "repository": {
