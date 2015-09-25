@@ -36,6 +36,8 @@ easily extendible. This stack already uses some
     Uglify, to minify JavaScript
   - [gulp-spawn-mocha](https://github.com/KenPowers/gulp-spawn-mocha) - To run
     tests with Mocha
+  - [gulp-bump](https://github.com/stevelacy/gulp-bump) - To bump up the version
+    number in `package.json`
 
 ### Scripting
 
@@ -152,6 +154,10 @@ Run this task if you want to release the Application for the audiences.
   - Run `browserify` and minify JS with Uglify
   - Run `stylus` and minify CSS with CSSO
   - Run `images` and minify them with Imagemin
+
+### `gulp bump`
+
+Bumps up the version number in `package.json`.
 
 
 ## Application Structure

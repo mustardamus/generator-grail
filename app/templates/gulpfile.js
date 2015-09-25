@@ -6,6 +6,7 @@ var concat      = require('gulp-concat');
 var uglify      = require('gulp-uglify');
 var csso        = require('gulp-csso');
 var mocha       = require('gulp-spawn-mocha');
+var bump        = require('gulp-bump');
 var source      = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer');
 var browserify  = require('browserify');
@@ -121,6 +122,12 @@ gulp.task('production', function() {
   jsBundling(jsBundle, destDir);
   cssBundling();
   imgProcessing();
+});
+
+gulp.task('bump', function() {
+  gulp.src('./package.json')
+    .pipe(bump())
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', ['browserify-watch'], function() {
