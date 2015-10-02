@@ -275,7 +275,7 @@ change, run:
 ### Generate a new Component
 
 You can generate the parts of a Component
-(Script, Template, Style, Test, Documentation) with this command:
+(Script, Template, Style, Test) with this command:
 
     yo grail:create
 

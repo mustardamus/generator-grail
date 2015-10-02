@@ -13,7 +13,6 @@ module.exports = [
       { checked: true, value: 'template.html',    name: 'Template      - The template for your Component (.html)' }
       { checked: true, value: 'style.styl',       name: 'Style         - The stylesheet for your Component (.styl)' }
       { checked: true, value: 'test.coffee',      name: 'Test          - The test case for your Component (.coffee)' }
-      { checked: true, value: 'documentation.md', name: 'Documentation - Documentation for your Component (.md)' }
     ]
   }
 ]
