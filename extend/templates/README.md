@@ -31,20 +31,19 @@ Also does the Foundation Plugins rely on jQuery.
 
 Get your app running as fast as possible, adjust, refactor and speed up later.
 
-### Foundation
+### Semantic-UI
 
-[Normalize.css](https://necolas.github.io/normalize.css/) and
-[Foundation](foundation.zurb.com/docs/) stylesheets are included in
-`./client/index.styl`.
+[Semantic-UI](http://semantic-ui.com/) stylesheets are included in
+`./client/index.styl` separately. Turn them on and off by commenting them in or
+out.
 
-Foundation also offers a bunch of jQuery Plugins. Included by default in
-`./client/index.styl` is the Base Plugin and the Reveal (Modal) Plugin. Extend
-the list as needed to keep the bundle size to a minimum.
+Semantic-UI also offers a bunch of jQuery Plugins. They are included separately
+in `./client/index.coffee`. Just like the stylesheets, turn them on and off as
+needed.
 
-### Font Awesome
-
-Quickly use loads of font icons with
-[Font Awesome](https://fortawesome.github.io/Font-Awesome/icon/).
+Note that
+Semantic-UI includes [Font Awesome](http://semantic-ui.com/elements/icon.html)
+icons.
 
 ### Fastclick
 

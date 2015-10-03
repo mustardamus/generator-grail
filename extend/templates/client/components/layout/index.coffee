@@ -10,3 +10,5 @@ module.exports =
   compiled: ->
     @$root.$watch 'currentPage', (page) =>
       @$data.currentPage = page
+
+  ready: ->
