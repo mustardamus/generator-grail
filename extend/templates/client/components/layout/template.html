@@ -1,5 +1,11 @@
-<div class="layout row">
-  <div class="large-12 columns">
-    <h1>{{currentPage}} <i class="fa fa-fighter-jet"></i></h1>
+<div class="layout">
+  <div id="header" class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="/#/" class="item {{currentPage === 'home' ? 'active' : ''}}">Home</a>
+    </div>
+  </div>
+
+  <div id="content" class="ui main container">
+    <div v-if="currentPage === 'home'" v-component="page-home"></div>
   </div>
 </div>

@@ -7,7 +7,6 @@ describe 'layout Component', ->
     templateEl = $(component.template)
 
     templateEl.hasClass('layout').should.ok
-    templateEl.find('h1').text().should.equal '{{welcome}}'
 
   it 'should have data to start with', ->
     component.data.welcome.should.equal 'Move fast. Get shit done.'

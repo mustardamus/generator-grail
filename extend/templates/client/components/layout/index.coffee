@@ -2,7 +2,8 @@ module.exports =
   replace:  true
   template: require('./template')
 
-  components: {}
+  components:
+    'page-home': require('../page-home')
 
   data: ->
     currentPage: ''

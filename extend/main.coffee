@@ -13,8 +13,12 @@ module.exports = yeoman.generators.Base.extend
       'client/components/$root/template.html'
       'client/components/layout/index.coffee'
       'client/components/layout/style.styl'
+      'client/components/layout/colors.styl'
       'client/components/layout/template.html'
       'client/components/router/index.coffee'
+      'client/components/page-home/index.coffee'
+      'client/components/page-home/style.styl'
+      'client/components/page-home/template.html'
       'test/client/index.coffee'
       'test/client/components/layout.coffee'
     ]
