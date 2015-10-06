@@ -48,5 +48,5 @@ for the backend to see what you'll get and how it works.
 
 ## `yo grail:create` - Create a frontend component
 
-This generator quickly creates a Script, Template and/or Style for
+This generator quickly creates a Script, Template, Style and/or a Test for
 a component.
