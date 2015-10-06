@@ -1,6 +1,10 @@
-# Yeoman Generator - Grail
+# Grail [Yeoman](http://yeoman.io/) Generator
 
-![](http://www.timeshighereducation.co.uk/Pictures/web/n/u/k/news_18_260112.jpg)
+My personal Holy Grail for quickly getting started with a sweet webdev environment.
+If you can't catch it, at least you can come close. Using/modifying it for over a year,
+haven't looked back.
+
+![](https://camo.githubusercontent.com/87f28a72cfc754122b0ce1611c402e94367ccf06/687474703a2f2f7777772e74696d6573686967686572656475636174696f6e2e636f2e756b2f50696374757265732f7765622f6e2f752f6b2f6e6577735f31385f3236303131322e6a7067)
 
 ## Installation
 
@@ -14,13 +18,15 @@ it do:
 
 ## Generate a app
 
+Make sure you have Yeoman installed: `npm install -g yo`. Then:
+
     mkdir grailtest
     cd grailtest
     yo grail
 
-Check out the
-[README.md](https://github.com/mustardamus/generator-grail/blob/master/app/templates/README.md)
-for an app to see what you'll get.
+This will create a bare-bone webdev environment for a modular one
+page application. Check out the [README.md](./app/templates/README.md)
+for an app to see what you'll get and how it works.
 
 ## Extend the app
 
