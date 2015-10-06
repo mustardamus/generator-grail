@@ -4,10 +4,6 @@
 
 ## Application Stack
 
-Latest and greatest in JavaScript development. This is only a development
-environment and not a framework. You can use your front-end framework of
-choice.
-
 This environment is intended to be used in a modular way. Everything is a
 Component and should work and be testable independently.
 
@@ -149,7 +145,8 @@ also run this task.
 
 ### `gulp production`
 
-Run this task if you want to release the Application for the audiences.
+Run this task if you want to release the Application for the audience. Note that
+you need to run `gulp build` before!
 
   - Run `browserify` and minify JS with Uglify
   - Run `stylus` and minify CSS with CSSO
@@ -186,7 +183,7 @@ respective global will be defined without declaring it:
     require('jQuery') # $ is globally defined
 
 However, if you declare it this way your tests may brake because they are run in
-Node.js by default (todo: run them in PhantomJS).
+Node.js by default (todo: run them in [PhantomJS](http://phantomjs.org/)).
 
 ### Stylesheet entry point - `./client/index.styl`
 
@@ -195,7 +192,7 @@ will take care of the bundling, so all you need is `@import`.
 
 For third party styles, include a `.css` file in a relative path:
 
-    @import '../bower_components/foundation/css/foundation.css'
+    @import '../bower_components/normalize-css/normalize.css'
 
 To import a module style:
 
@@ -210,6 +207,7 @@ If you define variables, you can use them in your imported components:
 
 And in `./client/components/post/style.styl`:
 
+    @import './colors'
     body
       background: backgroundColor
 
@@ -233,7 +231,7 @@ Why this naming? You can leave out the file extension when `require()`ing them
 (which would not possible if every component-part has the same name):
 
     post     = require('../post')    # respectively index.coffee
-    template = require('./template')
+    template = require('./template') # respectively template.html
 
 With the `component-name` as identifier, and `index.coffee` as Script entry
 point, you describe with the filename which part of the component you want to
@@ -271,15 +269,6 @@ To automatically re-run the `test` task whenever Application or Test files
 change, run:
 
     gulp test-watch
-
-### Generate a new Component
-
-You can generate the parts of a Component
-(Script, Template, Style, Test) with this command:
-
-    yo grail:create
-
-You will be prompted for the name and which parts you like to create.
 
 
 ## Workflow
