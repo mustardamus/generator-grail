@@ -10,6 +10,7 @@ module.exports = yeoman.generators.Base.extend
       'helpers/app.coffee'
       'models/count.coffee'
       'routes/app.coffee'
+      'initialize/app.coffee'
       'index.coffee'
     ]
     dirArr         = process.cwd().split('/')

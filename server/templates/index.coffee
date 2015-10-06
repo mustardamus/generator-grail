@@ -1,5 +1,4 @@
 express    = require('express')
-bodyParser = require('body-parser')
 fs         = require('fs')
 lodash     = require('lodash')
 mongoose   = require('mongoose')
@@ -24,6 +23,7 @@ helpers   = initDir(config.server.helpersDir)
 helpers._ = lodash
 routes    = initDir(config.server.routesDir)
 models    = initDir(config.server.modelsDir)
+inits     = initDir(config.server.initializeDir)
 db        = mongoose.connection
 
 for resourceName, modelFunc of models
@@ -32,14 +32,14 @@ for resourceName, modelFunc of models
 for resourceName, routesFunc of routes
   routesFunc.call(app, models, helpers, config)
 
-app.use express.static(config.server.publicDir)
-app.use bodyParser.json()
+for initName, initFunc of inits
+  initFunc.call(app, models, helpers, config)
 
 app.listen(config.server.port)
 console.log "Webserver started on port #{config.server.port}..."
 
 db.once 'open', ->
-  console.log "Connect to database #{config.database.url}"
+  console.log "Connected to database #{config.database.url}"
 
 db.on 'error', ->
   console.log "Oops, can not connect to database #{config.database.url}"
