@@ -16,38 +16,37 @@ it do:
     npm install
     npm link
 
-## Generate a app
+## `yo grail` - Generate a app
 
-Make sure you have Yeoman installed: `npm install -g yo`. Then:
+Make sure you have [Yeoman](http://yeoman.io/) installed: `npm install -g yo`. Then:
 
-    mkdir grailtest
-    cd grailtest
+    mkdir appname
+    cd appname
     yo grail
 
 This will create a bare-bone webdev environment for a modular one
 page application. Check out the [README.md](./app/templates/README.md)
 for an app to see what you'll get and how it works.
 
-## Extend the app
+## `yo grail:extend` - Extend the frontend app
 
-    yo grail:extend
+My personal choice in frontend libraries and frameworks, like
+[Vue.js](http://vuejs.org/guide/), [jQuery](https://jquery.com/) and
+[Semantic-UI](http://semantic-ui.com/).
 
-Check out the [README.md](https://github.com/mustardamus/generator-grail/blob/master/extend/templates/README.md)
-section for extending and see what you'll get.
+Check out the [README.md](./extend/templates/README.md)
+for extending the app to see what you'll get and how it works.
 
-## Extend the app with a server
+## `yo grail:server` - Extend with a Node.js backend
 
-    yo grail:server
+Sometimes just a frontend is not enough. If you'd like to have a simple
+[Express.js](http://expressjs.com/) and [MongoDB](https://www.mongodb.org/)
+backend to build on, run this generator.
 
-Check out the [README.md](https://github.com/mustardamus/generator-grail/blob/master/server/templates/README.md)
-section for extending and see what you'll get. [TODO]
+Check out the [README.md](./server/templates/README.md)
+for the backend to see what you'll get and how it works.
 
-## Generate a component
+## `yo grail:create` - Create a frontend component
 
-    yo grail:create
-
-You will be prompted with a couple of stuff.
-
-## TODO
-
-  - make tests for the $root and router components
+This generator quickly creates a Script, Template and/or Style for
+a component.
