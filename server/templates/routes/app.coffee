@@ -1,4 +1,4 @@
-module.exports = (models, helpers, config) ->
+module.exports = (config, helpers, models) ->
   @get '/hello/:name', (req, res) ->
     res.json { str: helpers.app.sayHello(req.params.name) }
 
