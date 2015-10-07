@@ -70,8 +70,8 @@ When in development environment, use `npm start`. This will start a
 `STDOUT`. It will watch the `./server` directory for any file changes and
 restarts the server.
 
-You'd still need to reload the browser manually tho. TODO: Check how to plug
-in BrowserSync.
+You'd still need to reload the browser manually. Unfortunately I haven't found
+a reliable solution for this yet.
 
 ### [Lodash](https://lodash.com/docs)
 
