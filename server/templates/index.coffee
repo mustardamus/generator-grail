@@ -20,11 +20,13 @@ app       = express()
 helpers   = initDir(config.server.helpersDir)
 routes    = initDir(config.server.routesDir)
 inits     = initDir(config.server.initializeDir)
-models    = {}
 
-if fs.readdirSync(config.server.modelsDir).length
+models    = {}
+modelsDir = config.server.modelsDir
+
+if fs.existsSync(modelsDir) and fs.readdirSync(modelsDir).length
   mongoose = require('mongoose')
-  models   = initDir(config.server.modelsDir)
+  models   = initDir(modelsDir)
   db       = mongoose.connection
 
   for resourceName, modelFunc of models

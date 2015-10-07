@@ -80,4 +80,33 @@ do `_ = require('lodash')` anywhere and hack away.
 
 ### [MongoDB](https://www.mongodb.org/) with [Mongoose](http://mongoosejs.com/docs/guide.html) (Optional)
 
-TBD.
+You can define [Mongoose](http://mongoosejs.com/docs/guide.html) models in
+`./server/models`. For example `./server/models/count.coffee`:
+
+    module.exports = (helpers) ->
+      @model 'Count',
+        visits: Number
+
+The context (`@`/`this`) is the `mongoose` object defined in the Entry Point.
+Just make sure that the `mongoose.model` definition is returned.
+
+Models are initialized in the `models` object and passed to initilization as
+well as routes. Just as the `helpers` it is important how you name the files,
+as it is the key the model is initialized with. The example above would be
+located at `models.count`. A usage example would be:
+
+    module.exports = (config, helpers, models) ->
+      @get '/count', (req, res) ->
+        models.count.findOne {}, (err, count) ->
+          unless count
+            count = new models.count({ visits: 0 })
+
+          count.visits += 1
+          count.save()
+
+          res.json count.toJSON()
+
+The Server Entry Point only tries to connect to the database defined in the
+config file if there are any model files. So you might use the Server without
+any database connection by leaving the `./server/models` directory empty or
+remove it altogether.
