@@ -66,18 +66,18 @@ Note that
 Semantic-UI includes [Font Awesome](http://semantic-ui.com/elements/icon.html)
 icons.
 
-### Fastclick
+### [FastClick](https://github.com/ftlabs/fastclick)
 
 [FastClick](https://github.com/ftlabs/fastclick) library for eliminating the
 300ms delay between a physical tap and the firing of a `click` event on mobile
 browsers.
 
-### Cheerio
+### [Cheerio](https://github.com/cheeriojs/cheerio)
 
 [Cheerio](https://github.com/cheeriojs/cheerio) is a jQuery like helper for
 Node.js. This makes running tests on HTML code pretty easy.
 
-### Should.js
+### [Should.js](https://github.com/visionmedia/should.js/)
 
 [Should.js](https://github.com/visionmedia/should.js/) is a assertion library
 that reads better than the `assert` functions that come with Node.js.
