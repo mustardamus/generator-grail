@@ -91,8 +91,10 @@ Copies the HTML Entry Point.
 
 ### `gulp fonts`
 
-Copies fonts. This tasks copies the fonts of Font Awesome by default, but note
-that you need to run `yo grail:extend`, so the fonts are available.
+Copies fonts. This tasks copies the fonts of Font Awesome included by
+Semantic-UI by default, but note that you need to run
+[`yo grail:extend`](../../extend/templates/README.md), so the files are
+available.
 
 ### `gulp stylus`
 
@@ -136,7 +138,7 @@ Bundles the Application Components and Tests together and run them in Mocha.
 
 ### `gulp test-watch`
 
-Whenever a Application of Test file changes re-run the `test` Task.
+Whenever a Application or Test file changes re-run the `test` Task.
 
 ### `gulp build`
 
