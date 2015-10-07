@@ -135,11 +135,9 @@ gulp.task('watch', ['browserify-watch'], function() {
   gulp.watch(srcDir + '/*.html',      ['html', browserSync.reload]);
   gulp.watch(srcDir + '/images/**/*', ['images', browserSync.reload]);
 
-  chokidar.watch([srcDir + '/index.styl', srcDir + '/components'])
+  chokidar.watch([srcDir + '/index.styl', srcDir + '/components/**/*.styl'])
     .on('all', function(event, path) {
-      var ext = path.substr(path.length - 5);
-
-      if((event === 'add' || event === 'change') && ext === '.styl') {
+      if(event === 'add' || event === 'change') {
         cssBundling();
       }
     });
