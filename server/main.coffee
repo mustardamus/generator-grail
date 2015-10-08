@@ -27,7 +27,7 @@ module.exports = yeoman.generators.Base.extend
   install:
     npmInstall: ->
       done = @async()
-      @npmInstall ['express', 'body-parser', 'lodash', 'mongoose'], { save: true }, done
+      @npmInstall ['express', 'body-parser', 'lodash', 'mongoose', 'socket.io'], { save: true }, done
 
   end: ->
     @log chalk.yellow('\nSweet, everything installed and generated!')

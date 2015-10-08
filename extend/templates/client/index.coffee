@@ -3,6 +3,12 @@ define ['jquery'], (jQuery) ->
   fastclick     = require('fastclick')
   Vue           = require('vue')
 
+  if +location.port is 7891
+    warning   = -> console.log('No Socket.io Server running')
+    window.io = { on: warning, emit: warning }
+  else
+    window.io = require('socket.io-client')()
+
   require('../bower_components/semantic-ui/dist/components/accordion.js')
   require('../bower_components/semantic-ui/dist/components/checkbox.js')
   require('../bower_components/semantic-ui/dist/components/dimmer.js')

@@ -35,7 +35,7 @@ module.exports = yeoman.generators.Base.extend
 
     npmInstall: ->
       done = @async()
-      @npmInstall ['jquery', 'fastclick', 'vue', 'director'], { save: true }, done
+      @npmInstall ['jquery', 'fastclick', 'vue', 'director', 'socket.io-client'], { save: true }, done
 
     npmDevInstall: ->
       done = @async()

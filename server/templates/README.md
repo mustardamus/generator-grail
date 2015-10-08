@@ -23,7 +23,7 @@ The Entry Point will load and initialize all files that are in
 `./server/initialize`. For example `./server/initialize/app.coffee` will
 initialize the JSON Body Parser and the static directory:
 
-    module.exports = (config, helpers, models) ->
+    module.exports = (config, helpers, io, models) ->
       @use express.static(config.server.publicDir)
       @use bodyParser.json()
 
@@ -36,7 +36,7 @@ Pretty much the same as the Initilization files, the Entry Point will load
 all files in `./server/routes`. Split the files depending on your resources and
 define all related routes in them. For example `./server/routes/app.coffee`:
 
-    module.exports = (config, helpers, models) ->
+    module.exports = (config, helpers, io, models) ->
       @get '/hello/:name', (req, res) ->
         res.json { str: helpers.app.sayHello(req.params.name) }
 
