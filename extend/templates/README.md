@@ -62,9 +62,15 @@ Semantic-UI also offers a bunch of jQuery Plugins. They are included separately
 in `./client/index.coffee`. Just like the stylesheets, turn them on and off as
 needed.
 
-Note that
-Semantic-UI includes [Font Awesome](http://semantic-ui.com/elements/icon.html)
-icons.
+Note that Semantic-UI includes
+[Font Awesome](http://semantic-ui.com/elements/icon.html) icons.
+
+### [Socket.io](http://socket.io/docs/)
+
+If you are running a Socket.io Server (`yo grail:server`, for starters) you can
+use [Socket.io](http://socket.io/docs/). If the web application is serving from
+`gulp server` (port `7891`), the global `window.io` object is stubbed and don't
+do anything other than printing a warning to `console.log`.
 
 ### [FastClick](https://github.com/ftlabs/fastclick)
 
@@ -85,10 +91,10 @@ that reads better than the `assert` functions that come with Node.js.
 
 ## Create a Vue.js Component
 
-Use the command `yo grail:create` to create a component in `./client/components`.
-You can choose which parts you want to create: Script, Template, Style and/or
-Test.
+Use the command `yo grail:create` to create a component in
+`./client/components`. You can choose which parts you want to create: Script,
+Template, Style and/or Test.
 
 Then you just `require()` the Script or Template, `@import()` the Style wherever
-it is needed. Component names should be all lowercase and devided by a dash `-`
+it is needed. Component names should be all lowercase and divided by a dash `-`
 if multiple words.

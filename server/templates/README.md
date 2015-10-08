@@ -4,8 +4,8 @@
 
 #### Entry Point
 
-Bootstrapping is happening in `./server/index.coffee`. You usually don't need
-to touch this file. If you want to extend the functionality of the Server you
+Bootstrapping is happening in `./server/index.coffee`. You usually don't need to
+touch this file. If you want to extend the functionality of the Server you
 should use the `./server/initialize` directory (see below).
 
 #### Configuration
@@ -32,8 +32,8 @@ Entry Point.
 
 #### Routes
 
-Pretty much the same as the Initilization files, the Entry Point will load
-all files in `./server/routes`. Split the files depending on your resources and
+Pretty much the same as the Initilization files, the Entry Point will load all
+files in `./server/routes`. Split the files depending on your resources and
 define all related routes in them. For example `./server/routes/app.coffee`:
 
     module.exports = (config, helpers, io, models) ->
@@ -60,8 +60,8 @@ object. For example `./server/helpers/app.coffee`:
 Will be available as `helpers.app.sayHello()`. A file
 `./server/helpers/string.coffee` would be available as `helpers.string.*`.
 
-Helpers should only work with raw data and should not interact with the
-Express app or models in any way.
+Helpers should only work with raw data and should not interact with the Express
+app or models in any way.
 
 #### Start Server for Development
 
@@ -75,8 +75,14 @@ a reliable solution for this yet.
 
 ### [Lodash](https://lodash.com/docs)
 
-[Lodash](https://lodash.com/docs) is already installed for convinience. Just
-do `_ = require('lodash')` anywhere and hack away.
+[Lodash](https://lodash.com/docs) is already installed for convinience. Just do
+`_ = require('lodash')` anywhere and hack away.
+
+### [Socket.io](http://socket.io/docs/)
+
+A [Socket.io](http://socket.io/docs/) Server is automatically initialized on
+the Entry Point and is served at the same port as the HTTP Server. The `io`
+object is passed to the initilization and the routes, see the examples above.
 
 ### [MongoDB](https://www.mongodb.org/) with [Mongoose](http://mongoosejs.com/docs/guide.html) (Optional)
 
@@ -91,9 +97,9 @@ The context (`@`/`this`) is the `mongoose` object defined in the Entry Point.
 Just make sure that the `mongoose.model` definition is returned.
 
 Models are initialized in the `models` object and passed to initilization as
-well as routes. Just as the `helpers` it is important how you name the files,
-as it is the key the model is initialized with. The example above would be
-located at `models.count`. A usage example would be:
+well as routes. Just as the `helpers` it is important how you name the files, as
+it is the key the model is initialized with. The example above would be located
+at `models.count`. A usage example would be:
 
     module.exports = (config, helpers, models) ->
       @get '/count', (req, res) ->
