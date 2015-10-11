@@ -30,7 +30,7 @@ var defineBundle = function(entry) {
   return browserify({
     cache: {},
     packageCache: {},
-    fullPaths: true,
+    fullPaths: false,
     extensions: ['.coffee', '.html']
   }).add(entry)
     .transform(coffeeify)
