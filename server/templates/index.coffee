@@ -1,5 +1,7 @@
-express = require('express')
 fs      = require('fs')
+http    = require('http')
+express = require('express')
+socket  = require('socket.io')
 config  = require('./config')
 
 initDir = (path) ->
@@ -17,10 +19,11 @@ initDir = (path) ->
   outObj
 
 app       = express()
+server    = http.Server(app)
+io        = socket(server)
 helpers   = initDir(config.server.helpersDir)
 routes    = initDir(config.server.routesDir)
 inits     = initDir(config.server.initializeDir)
-
 models    = {}
 modelsDir = config.server.modelsDir
 
@@ -41,10 +44,10 @@ if fs.existsSync(modelsDir) and fs.readdirSync(modelsDir).length
   mongoose.connect config.database.url
 
 for resourceName, routesFunc of routes
-  routesFunc.call(app, config, helpers, models)
+  routesFunc.call(app, config, helpers, io, models)
 
 for initName, initFunc of inits
-  initFunc.call(app, config, helpers, models)
+  initFunc.call(app, config, helpers, io, models)
 
-app.listen(config.server.port)
-console.log "\nWebserver started on port #{config.server.port}..."
+server.listen config.server.port, ->
+  console.log "\nWebserver started on port #{config.server.port}..."
