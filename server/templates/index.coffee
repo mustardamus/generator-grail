@@ -42,12 +42,12 @@ if fs.existsSync(modelsDir) and fs.readdirSync(modelsDir).length
     console.log "Can not connect to database #{config.database.url}! 'mongod' running?"
 
   mongoose.connect config.database.url
+  
+for initName, initFunc of inits
+  initFunc.call(app, config, helpers, io, models)
 
 for resourceName, routesFunc of routes
   routesFunc.call(app, config, helpers, io, models)
-
-for initName, initFunc of inits
-  initFunc.call(app, config, helpers, io, models)
 
 server.listen config.server.port, ->
   console.log "\nWebserver started on port #{config.server.port}..."
