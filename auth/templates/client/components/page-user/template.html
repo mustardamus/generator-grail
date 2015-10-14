@@ -1,0 +1,68 @@
+<div class="page-user">
+  <div v-if="currentUser">
+    <h1>Hello {{currentUser.username}}!</h1>
+
+    <form class="ui form">
+      <div class="ui success message">
+        <div class="header">Successfully updated.</div>
+      </div>
+
+      <div class="ui error message">
+        <div class="header">{{errorMessage}}</div>
+      </div>
+
+      <div v-show="!changePassword">
+        <div class="field" id="username-field">
+          <label for="username">Username</label>
+          <input type="text" v-model="currentUser.username" id="username" placeholder="Username">
+        </div>
+
+        <div class="field" id="email-field">
+          <label for="email">E-Mail</label>
+          <input type="text" v-model="currentUser.email" id="email" placeholder="E-Mail">
+          <div class="ui icon message" v-if="!currentUser.email">
+            <i class="info icon"></i>
+            <div class="content">
+              <div class="header">Please provide an E-Mail address</div>
+              <p>
+                We won't spam you. But in case you forget your password, you will
+                be able to reset it via E-Mail. Deal?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-show="changePassword">
+        <div class="field" id="password-old-field">
+          <label for="password-old">Old Password</label>
+          <input type="password" v-model="passwordOld" id="password-old" placeholder="Old Password">
+        </div>
+
+        <div class="field" id="password-new-field">
+          <label for="password-new">New Password</label>
+          <input type="password" v-model="passwordNew" id="password-new" placeholder="New Password">
+        </div>
+
+        <div class="field" id="password-new-check-field">
+          <label for="password-new-check">New Password Check</label>
+          <input type="password" v-model="passwordNewCheck" id="password-new-check" placeholder="New Password Check">
+        </div>
+      </div>
+
+      <div class="submit field">
+        <button class="ui button primary" type="submit" v-on="click:onUpdateClick">
+          Update
+        </button>
+
+        <a class="ui button" v-if="!changePassword" v-on="click:onChangePasswordClick">
+          Change Password
+        </a>
+
+        <a class="ui button" v-if="changePassword" v-on="click:onChangePasswordClick">
+          Change Infos
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

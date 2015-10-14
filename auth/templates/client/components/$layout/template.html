@@ -1,0 +1,18 @@
+<div class="layout">
+  <div id="header" class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="/#/" class="item {{currentPage === 'home' ? 'active' : ''}}">Home</a>
+      <a href="/#/login" class="item {{currentPage === 'login' ? 'active' : ''}}" v-if="!loggedIn">Login</a>
+      <a href="/#/register" class="item {{currentPage === 'register' ? 'active' : ''}}" v-if="!loggedIn">Register</a>
+      <a href="/#/user" class="item {{currentPage === 'user' ? 'active' : ''}}" v-if="loggedIn">User</a>
+      <a href="/#/logout" class="item" v-if="loggedIn">Logout</a>
+    </div>
+  </div>
+
+  <div id="content" class="ui main container">
+    <div v-if="currentPage === 'home'" v-component="page-home"></div>
+    <div v-if="currentPage === 'login'" v-component="page-login"></div>
+    <div v-if="currentPage === 'register'" v-component="page-register"></div>
+    <div v-if="currentPage === 'user'" v-component="page-user"></div>
+  </div>
+</div>

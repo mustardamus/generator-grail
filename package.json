@@ -9,7 +9,9 @@
   ],
   "author": "Sebastian Senf (me@akrasia.me)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "bcrypt": "^0.8.5"
+  },
   "devDependencies": {
     "chalk": "^0.5.1",
     "coffee-script": "^1.8.0",
