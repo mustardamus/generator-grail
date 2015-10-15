@@ -49,6 +49,15 @@ backend to build on, run this generator.
 Check out the [README.md](./server/templates/README.md)
 for the backend to see what you'll get and how it works.
 
+## `yo grail:auth` - Extend front- and backend with registration/authentication
+
+Run this generator to have a boilerplate for basic user registration and
+authentication. Note that you need to run `yo grail:extend` and
+`yo grail:server` beforehand.
+
+Check out the [README.md](./auth/templates/README.md)
+for the registration/authentication to see what you'll get and how it works.
+
 ## `yo grail:create` - Create a frontend component
 
 This generator quickly creates a Script, Template, Style and/or a Test for
