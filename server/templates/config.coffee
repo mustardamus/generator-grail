@@ -9,3 +9,6 @@ module.exports =
 
   database:
     url: 'mongodb://localhost/{{name}}'
+
+  session:
+    secret: '{{secret}}'

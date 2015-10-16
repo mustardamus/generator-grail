@@ -1,6 +1,7 @@
 yeoman     = require('yeoman-generator')
 chalk      = require('chalk')
 Handlebars = require('handlebars')
+bcrypt     = require('bcrypt')
 
 module.exports = yeoman.generators.Base.extend
   writing: ->
@@ -16,7 +17,7 @@ module.exports = yeoman.generators.Base.extend
     dirArr         = process.cwd().split('/')
     currentDir     = dirArr[dirArr.length - 1]
     configTemplate = Handlebars.compile(@src.read('config.coffee'))
-    configCompiled = configTemplate({ name: currentDir })
+    configCompiled = configTemplate({ name: currentDir, secret: bcrypt.genSaltSync(16) })
 
     @dest.write 'server/config.coffee', configCompiled
     @dest.write 'README.md', "#{destReadme}\n\n#{srcReadme}"
@@ -27,7 +28,7 @@ module.exports = yeoman.generators.Base.extend
   install:
     npmInstall: ->
       done = @async()
-      @npmInstall ['express', 'body-parser', 'lodash', 'mongoose', 'socket.io'], { save: true }, done
+      @npmInstall ['express', 'body-parser', 'lodash', 'mongoose', 'socket.io', 'express-session'], { save: true }, done
 
   end: ->
     @log chalk.yellow('\nSweet, everything installed and generated!')
