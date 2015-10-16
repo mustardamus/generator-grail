@@ -8,8 +8,15 @@ it for over a year, haven't looked back.
 
 ## Installation
 
-This generator is work in progress and not in the NPM registry yet. To install
-it do:
+Make sure you have [Yeoman](http://yeoman.io/) installed:
+
+    npm install -g yo
+
+Then install the generator:
+
+    npm install -g generator-grail
+
+### Local Installation
 
     git clone git@github.com:mustardamus/generator-grail.git
     cd generator-grail
@@ -17,9 +24,6 @@ it do:
     npm link
 
 ## `yo grail` - Generate a app
-
-Make sure you have [Yeoman](http://yeoman.io/) installed: `npm install -g yo`.
-Then:
 
     mkdir appname
     cd appname
