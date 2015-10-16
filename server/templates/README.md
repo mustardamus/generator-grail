@@ -116,3 +116,8 @@ The Server Entry Point only tries to connect to the database defined in the
 config file if there are any model files. So you might use the Server without
 any database connection by leaving the `./server/models` directory empty or
 remove it altogether.
+
+### `yo grail:create` - Generate a Server Component
+
+With the `yo grail:create` you can quickly create a Server Component consisting
+of Initialize, Helper, Route and/or Model. All are optional.

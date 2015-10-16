@@ -58,7 +58,8 @@ authentication. Note that you need to run `yo grail:extend` and
 Check out the [README.md](./auth/templates/README.md)
 for the registration/authentication to see what you'll get and how it works.
 
-## `yo grail:create` - Create a frontend component
+## `yo grail:create` - Create a Client/Server Component
 
-This generator quickly creates a Script, Template, Style and/or a Test for
-a component.
+This generator quickly creates a Component for the Client (Code, Style, Template
+and/or Test) and the Server (Initialize, Helper, Routes, Model). Just run it and
+you are prompted with the different options.
