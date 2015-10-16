@@ -1,13 +1,20 @@
 {
   "name": "generator-grail",
   "version": "0.1.0",
-  "description": "Generator for the last lazy-ass development environment you'll need. I swear.",
+  "description": "Yeoman Generator for a modern webdev environment. Optional with Client and/or Server framework on top. Includes batteries.",
   "main": "app/index.js",
   "scripts": {},
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator", "gulp", "browserify", "browser-sync", "mocha",
+    "vue.js", "director", "stylus", "semantic-ui", "fastclick", "coffee-script",
+    "express.js", "mongoose", "lodash", "socket.io", "bcrypt", "jsonwebtoken"
   ],
-  "author": "Sebastian Senf (me@akrasia.me)",
+  "repository": "https://github.com/mustardamus/generator-grail.git",
+  "author": {
+    "name": "Sebastian Senf",
+    "email": "me@akrasia.me",
+    "url": "http://akrasia.me"
+  },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
