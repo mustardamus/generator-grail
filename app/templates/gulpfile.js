@@ -82,7 +82,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('fonts', function() {
-  gulp.src('./bower_components/semantic-ui/dist/themes/default/assets/fonts/*')
+  gulp.src('./bower_components/semantic/dist/themes/default/assets/fonts/*')
     .pipe(gulp.dest(destDir + '/themes/default/assets/fonts'));
 });
 
