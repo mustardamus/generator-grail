@@ -9,13 +9,14 @@
   ],
   "author": "Sebastian Senf (me@akrasia.me)",
   "license": "MIT",
-  "dependencies": {
-    "bcrypt": "^0.8.5"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "bcrypt": "^0.8.5",
     "chalk": "^0.5.1",
     "coffee-script": "^1.8.0",
     "handlebars": "^2.0.0",
+    "lodash": "^3.10.1",
+    "pluralize": "^1.2.1",
     "yeoman-generator": "^0.17.7"
   }
 }
