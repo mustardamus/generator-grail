@@ -1,6 +1,6 @@
 {
   "name": "generator-grail",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yeoman Generator for a modern webdev environment. Optional with Client and/or Server framework on top. Includes batteries.",
   "main": "app/index.js",
   "scripts": {},
