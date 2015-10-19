@@ -1,4 +1,4 @@
-module.exports = (config, helpers) ->
+module.exports = (config, helpers, models) ->
   return (req, res, next) ->
     token = req.headers['x-access-token']
 
@@ -8,5 +8,8 @@ module.exports = (config, helpers) ->
     helpers.token.verify token, config.auth.secret, (err, user) ->
       return res.status(403).send({ message: config.auth.messages.invalidToken }) if(err)
 
-      req.user = user
-      next()
+      models.user.findOne { username: user.username }, (err, user) ->
+        return res.status(403).send({ message: config.auth.messages.userFindError }) if(err)
+
+        req.user = user
+        next()

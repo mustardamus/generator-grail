@@ -15,7 +15,7 @@ module.exports =
     registerPath: '/register'
     secret      : '{{secret}}'
     saltLength  : 10
-    messages    : 
+    messages    :
       userNotFound   : 'Can not find user.'
       wrongPassword  : 'Wrong password.'
       usernameMissing: 'Username missing.'
@@ -25,3 +25,4 @@ module.exports =
       invalidEmail   : 'Invalid E-Mail address.'
       noToken        : 'No token provided.'
       invalidToken   : 'Invalid token.'
+      userFindError  : 'Can not find user.'

@@ -39,16 +39,14 @@ the user must provide the current password.
 You can protect routes by the authentication middleware like this:
 
     module.exports = (config, helpers, io, models) ->
-      auth = require('../middleware/auth')(config, helpers)
+      auth = require('../middleware/auth')(config, helpers, models)
 
       @get '/inside', auth, (req, res) ->
         res.json req.user
 
 If the authentication fails, a 403 code is delivered to the client and the
 defined callback is never happening. If the authentication succeeds, `req.user`
-is populated with the information for the current user. Note that this is not
-the User Model. If you'd like to get the model you can find it by
-`req.user._id`.
+is populated with the Mongoose User Model.
 
 ### Frontend
 
