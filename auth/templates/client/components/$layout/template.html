@@ -1,11 +1,24 @@
 <div class="layout">
   <div id="header" class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="/#/" class="item {{currentPage === 'home' ? 'active' : ''}}">Home</a>
-      <a href="/#/login" class="item {{currentPage === 'login' ? 'active' : ''}}" v-if="!loggedIn">Login</a>
-      <a href="/#/register" class="item {{currentPage === 'register' ? 'active' : ''}}" v-if="!loggedIn">Register</a>
-      <a href="/#/user" class="item {{currentPage === 'user' ? 'active' : ''}}" v-if="loggedIn">User</a>
-      <a href="/#/logout" class="item" v-if="loggedIn">Logout</a>
+      <a href="/#/" class="item {{currentPage === 'home' ? 'active' : ''}}">
+        <i class="home icon"></i> Home
+      </a>
+      <a href="/#/login" class="item {{currentPage === 'login' ? 'active' : ''}}" v-if="!loggedIn">
+        <i class="sign in icon"></i> Login
+      </a>
+      <a href="/#/register" class="item {{currentPage === 'register' ? 'active' : ''}}" v-if="!loggedIn">
+        <i class="add user icon"></i> Register
+      </a>
+
+      <div class="right menu">
+        <a href="/#/user" class="item {{currentPage === 'user' ? 'active' : ''}}" v-if="loggedIn">
+          <i class="user icon"></i> Hello, {{currentUser.username}}
+        </a>
+        <a href="/#/logout" class="item" v-if="loggedIn">
+          <i class="sign out icon"></i> Logout
+        </a>
+      </div>
     </div>
   </div>
 

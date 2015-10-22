@@ -11,6 +11,7 @@ module.exports =
   data: ->
     currentPage: ''
     loggedIn   : @$root.$data.loggedIn
+    currentUser: @$root.$data.currentUser or { username: 'You' }
 
   compiled: ->
     @$root.$watch 'currentPage', (page) =>
@@ -18,5 +19,8 @@ module.exports =
 
     @$root.$watch 'loggedIn', (val) =>
       @$data.loggedIn = val
+
+    @$root.$watch 'currentUser', (val) =>
+      @$data.currentUser = val
 
   ready: ->
