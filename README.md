@@ -62,6 +62,15 @@ authentication. Note that you need to run `yo grail:extend` and
 Check out the [README.md](./auth/templates/README.md)
 for the registration/authentication to see what you'll get and how it works.
 
+## `yo grail:workers` - Extend with continuously running Workers
+
+Run this generator to have a boilerplate for Workers that also have access to
+the config, helpers and models that the Server is using. They are called in an
+interval.
+
+Check out the [README.md](./workers/templates/README.md) for Workers to see what
+you'll get and how it works.
+
 ## `yo grail:create` - Create a Client/Server Component
 
 This generator quickly creates a Component for the Client (Code, Style, Template
