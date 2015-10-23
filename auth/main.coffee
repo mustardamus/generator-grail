@@ -35,10 +35,12 @@ module.exports = yeoman.generators.Base.extend
     for filePath in filesArr
       @src.copy filePath, filePath
 
+    sessionSecret  = bcrypt.genSaltSync(16)
+    authSecret     = bcrypt.genSaltSync(16)
     dirArr         = process.cwd().split('/')
     currentDir     = dirArr[dirArr.length - 1]
     configTemplate = Handlebars.compile(@src.read('server/config.coffee'))
-    configCompiled = configTemplate({ name: currentDir, secret: bcrypt.genSaltSync(16) })
+    configCompiled = configTemplate({ name: currentDir, sessionSecret: sessionSecret, authSecret: authSecret })
 
     @dest.write 'server/config.coffee', configCompiled
 

@@ -10,10 +10,13 @@ module.exports =
   database:
     url: 'mongodb://localhost/{{name}}'
 
+  session:
+    secret: {{sessionSecret}}
+
   auth:
     loginPath   : '/login'
     registerPath: '/register'
-    secret      : '{{secret}}'
+    secret      : '{{authSecret}}'
     saltLength  : 10
     messages    :
       userNotFound   : 'Can not find user.'
