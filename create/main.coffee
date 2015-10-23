@@ -17,6 +17,10 @@ module.exports = yeoman.generators.Base.extend
       if answers.componentType is 'server'
         componentPrompts = prompts.serverComponent
 
+      if answers.componentType is 'worker'
+        done()
+        return
+
       @prompt componentPrompts, (answers) =>
         @config.answers = answers
         done()
@@ -24,6 +28,14 @@ module.exports = yeoman.generators.Base.extend
   writing: ->
     name = @config.name
     type = @config.type
+
+    if type is 'worker'
+      content  = @src.read("workers/worker.coffee")
+      template = Handlebars.compile(content)
+      content  = template({ name: "#{_.capitalize(name)}Worker" })
+
+      @dest.write "workers/#{name}.coffee", content
+      return
 
     for componentPart in @config.answers.componentParts
       templateObj = _.extend
@@ -63,5 +75,12 @@ module.exports = yeoman.generators.Base.extend
 
       @log chalk.yellow('\nTo include the Component test do (in ./test/client/index.coffee):')
       @log chalk.magenta("  require('./components/#{@config.name}')")
-    else
-      @log chalk.yellow('\nThe Server Framework will initialize your Component Parts automatically. Don\'t forget to restart.')
+
+    if @config.type is 'worker'
+      @log chalk.yellow('\nWorker generated. Don\'t forget to specify the interval (in ./server/config.coffee):')
+      @log chalk.magenta("  workers:")
+      @log chalk.magenta("    intervals:")
+      @log chalk.magenta("      #{@config.name}: 15")
+
+      @log chalk.yellow('\nThe start Worker with:')
+      @log chalk.magenta("  coffee workers --worker=#{@config.name}")

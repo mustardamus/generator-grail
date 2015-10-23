@@ -35,5 +35,11 @@ module.exports = yeoman.generators.Base.extend
     @log chalk.yellow('\nTo create a Express Node.js server (with Lodash and Mongoose):')
     @log chalk.magenta('  yo grail:server')
 
-    @log chalk.yellow('\nTo create a Component (Script, Style, Template and/or Test) run the command:')
+    @log chalk.yellow('\nTo create a registration/authentication boilerplate for the Server:')
+    @log chalk.magenta('  yo grail:auth')
+
+    @log chalk.yellow('\nTo create a continues Worker boilerplate (with Mongoose):')
+    @log chalk.magenta('  yo grail:workers')
+
+    @log chalk.yellow('\nTo create a Component (Client/Server/Worker) run the command:')
     @log chalk.magenta('  yo grail:create')

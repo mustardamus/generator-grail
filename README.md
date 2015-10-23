@@ -74,5 +74,5 @@ you'll get and how it works.
 ## `yo grail:create` - Create a Client/Server Component
 
 This generator quickly creates a Component for the Client (Code, Style, Template
-and/or Test) and the Server (Initialize, Helper, Routes, Model). Just run it and
-you are prompted with the different options.
+and/or Test), the Server (Initialize, Helper, Routes, Model) or a Worker. Just
+run it and you are prompted with the different options.

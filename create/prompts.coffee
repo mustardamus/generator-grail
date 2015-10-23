@@ -7,6 +7,7 @@ module.exports =
       choices: [
         { checked: true, value: 'client',  name: 'Client - Vue.js Component for the Frontend' }
         { checked: false, value: 'server', name: 'Server - Express.js Component for the Backend' }
+        { checked: false, value: 'worker', name: 'Worker - Standalone continues Worker for the Backend' }
       ]
     }
     {

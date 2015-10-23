@@ -309,8 +309,3 @@ Install it via Bower:
 And `@import` it in `./client/index.styl`:
 
     @import '../bower_components/foundation/css/foundation.css'
-
-### `yo grail:create` - Generate a Client Component
-
-With the `yo grail:create` you can quickly create a Client Component consisting
-of Code, Style, Template and/or Test. All are optional.
