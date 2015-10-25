@@ -47,6 +47,7 @@ db.once 'open', ->
   console.log "Connected to database #{config.database.url}..."
 
   Worker     = require("./#{argv.worker}")
+  doneFunc   = -> process.exit()
   workerCall = ->
     logFunc = (level, message, additional) ->
       time   = moment().format('HH:mm:ss')
@@ -57,11 +58,12 @@ db.once 'open', ->
       else
         log[level](prefix, message)
 
-    new Worker(config, helpers, logFunc, models)
+    new Worker(config, helpers, logFunc, models, doneCb)
 
-  setInterval ->
-    workerCall()
-  , 1000 * 60 * config.workers.intervals[argv.worker]
+  unless argv.once
+    setInterval ->
+      workerCall()
+    , 1000 * 60 * config.workers.intervals[worker]
 
   workerCall()
 
