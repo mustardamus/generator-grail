@@ -15,7 +15,7 @@ unless fs.existsSync("#{__dirname}/#{worker}.coffee")
   console.log "Worker '#{worker}.coffee' does not exist."
   return
 
-unless config.workers.intervals[worker]
+if !config.workers.intervals[worker] and !argv.once
   console.log "Please specify a interval for the worker '#{worker}' in '../server/config.coffee'."
   return
 

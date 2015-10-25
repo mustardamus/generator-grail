@@ -12,9 +12,9 @@ assume you have a worker `./workers/example.coffee`:
         @log 'info', 'Keep on... working?'
         @doneCb() # if it only needs to run once, call this to exit process
 
-The interval in which the Worker is executed must be defined
-`./server/config.coffee` (where all the other configs for the Worker are also
-located):
+The interval in which the Worker is executed must be defined if you don't only
+run it `--once` (see below), in `./server/config.coffee` (where all the other
+configs for the Worker are also located):
 
     workers:
       intervals: # in minutes
