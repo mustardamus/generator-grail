@@ -9,39 +9,26 @@ The entry point for the [Vue.js](http://vuejs.org/guide/) application is
 `<div id="app"/>` container on the `<body>` of the `./client/index.html` page,
 by the Script entry point `./client/index.coffee`.
 
-Normally you should only touch `./client/index.coffee` to add new bootstrapping
-functionality or glogbally defined libraries.
-
 Use `./client/components/$root/data.coffee` to define data that are accessible
 by every component via `@$root.$data`.
 
 If you need to trigger events in components that are not related you should use
 `@$root.$dispatch()` and `@$root.$on()`.
 
-#### `$layout` Component
-
-Components should be
-[defined and initialized](http://vuejs.org/guide/composition.html) in
-`./client/components/$layout/index.coffee` and
-`./client/components/$layout/template.html`.
-Global styles should go in `./client/components/$layout/style.styl`.
+Global styles should go in `./client/components/$root/style.styl`. Colors can
+be defined in and loaded from `./client/components/$root/colors.styl`.
 
 #### `$router` Component
 
-The `$router` Component uses [Director](https://github.com/flatiron/director)
-and sets `@$root.$data.currentPage` whenever the page changes. The `/#/` route
-will become `home`. `/#/about`, for example, will become `about`.
-
-Define your custom routes in `./client/components/$router/index.coffee`.
+The `$router` Component uses [vue-router](https://github.com/vuejs/vue-router/).
+Define your custom routes in `./client/components/$router/index.coffee`. Then
+you just link then with `v-link` and you are set.
 
 #### `page-home` Component
 
-This acts as a example component. It is defined and initialized in the
-`$layout` component, and is loaded whenever
-`@$root.$data.currentPage === 'home'`.
-
-It's recommended to keep the `page-*` convention when you create other
-top-level pages.
+This is a example component and acts as home page. Page-Components are defined
+in the `$router` component. It's recommended to keep the `page-*` convention
+when you create other top-level pages.
 
 ### [jQuery](https://jquery.com/)
 

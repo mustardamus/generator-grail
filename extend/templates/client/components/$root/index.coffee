@@ -1,13 +1,10 @@
 module.exports =
-  replace:  true
+  replace : true
   template: require('./template')
-  data:     require('./data')
+  data    : require('./data')
 
-  components:
-    layout: require('../$layout')
-    router: require('../$router')
-
-  compiled: ->
-    window.data   = @$data # to inspect the current state in the browser
-
-  methods: {}
+  ready: ->
+    # small hack to remove persistent 'active' class on home link
+    window.onhashchange = ->
+      if location.hash isnt '#!/'
+        $('#header a.home', @$el).removeClass 'active'

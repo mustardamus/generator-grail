@@ -1,1 +1,1 @@
-require './components/layout'
+require './components/$root'

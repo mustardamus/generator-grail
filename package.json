@@ -1,12 +1,12 @@
 {
   "name": "generator-grail",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Yeoman Generator for a modern webdev environment. Optional with Client and/or Server framework on top. Includes batteries.",
   "main": "app/index.js",
   "scripts": {},
   "keywords": [
     "yeoman-generator", "gulp", "browserify", "browser-sync", "mocha",
-    "vue.js", "director", "stylus", "semantic-ui", "fastclick", "coffee-script",
+    "vue.js", "stylus", "semantic-ui", "fastclick", "coffee-script",
     "express.js", "mongoose", "lodash", "socket.io", "bcrypt", "jsonwebtoken"
   ],
   "repository": "https://github.com/mustardamus/generator-grail.git",

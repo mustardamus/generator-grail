@@ -1,4 +1,11 @@
-<div id="app">
-  <div v-component="layout" v-ref="layout"></div>
-  <div v-component="router" v-ref="router"></div>
+<div id="app" class="layout">
+  <div id="header" class="ui fixed inverted menu">
+    <div class="ui container">
+      <a v-link="{ name: 'home'}" class="item home">
+        <i class="home icon"></i>Home
+      </a>
+    </div>
+  </div>
+
+  <router-view id="content" class="ui main container"></router-view>
 </div>

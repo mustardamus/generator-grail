@@ -2,6 +2,7 @@ define ['jquery'], (jQuery) ->
   window.jQuery = window.$ = jQuery
   fastclick     = require('fastclick')
   Vue           = require('vue')
+  VueRouter     = require('vue-router')
 
   # comment this out if you don't plan to use socket.io
   if +location.port is 7891
@@ -27,10 +28,14 @@ define ['jquery'], (jQuery) ->
   # require('../bower_components/semantic/dist/components/tab.js')
   # require('../bower_components/semantic/dist/components/transition.js')
 
+  Vue.use(VueRouter)
+
   jQuery ->
-    $root = Vue.extend(require('./components/$root'))
+    $root   = Vue.extend(require('./components/$root'))
+    $router = new VueRouter({ linkActiveClass: 'active' })
 
     $('<div/>', { id: 'app' }).appendTo 'body'
-    new $root({ el: '#app' })
+    $router.map require('./components/$router')
+    $router.start $root, '#app'
 
     fastclick(document.body)

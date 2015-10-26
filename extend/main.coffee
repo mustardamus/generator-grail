@@ -11,16 +11,14 @@ module.exports = yeoman.generators.Base.extend
       'client/components/$root/index.coffee'
       'client/components/$root/data.coffee'
       'client/components/$root/template.html'
-      'client/components/$layout/index.coffee'
-      'client/components/$layout/style.styl'
-      'client/components/$layout/colors.styl'
-      'client/components/$layout/template.html'
+      'client/components/$root/style.styl'
+      'client/components/$root/colors.styl'
       'client/components/$router/index.coffee'
       'client/components/page-home/index.coffee'
       'client/components/page-home/style.styl'
       'client/components/page-home/template.html'
       'test/client/index.coffee'
-      'test/client/components/layout.coffee'
+      'test/client/components/$root.coffee'
     ]
 
     @dest.write 'README.md', "#{destReadme}\n\n#{srcReadme}"
@@ -35,7 +33,7 @@ module.exports = yeoman.generators.Base.extend
 
     npmInstall: ->
       done = @async()
-      @npmInstall ['jquery', 'fastclick', 'vue', 'director', 'socket.io-client'], { save: true }, done
+      @npmInstall ['jquery', 'fastclick', 'vue', 'vue-router', 'socket.io-client'], { save: true }, done
 
     npmDevInstall: ->
       done = @async()
