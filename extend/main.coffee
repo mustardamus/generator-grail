@@ -8,12 +8,12 @@ module.exports = yeoman.generators.Base.extend
     filesArr   = [
       'client/index.coffee'
       'client/index.styl'
+      'client/routes/index.coffee'
       'client/components/$root/index.coffee'
       'client/components/$root/data.coffee'
       'client/components/$root/template.html'
       'client/components/$root/style.styl'
       'client/components/$root/colors.styl'
-      'client/components/$router/index.coffee'
       'client/components/page-home/index.coffee'
       'client/components/page-home/style.styl'
       'client/components/page-home/template.html'

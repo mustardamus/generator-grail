@@ -35,7 +35,7 @@ define ['jquery'], (jQuery) ->
     $router = new VueRouter({ linkActiveClass: 'active' })
 
     $('<div/>', { id: 'app' }).appendTo 'body'
-    $router.map require('./components/$router')
+    $router.map require('./routes')
     $router.start $root, '#app'
 
     fastclick(document.body)

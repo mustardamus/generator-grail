@@ -18,17 +18,18 @@ If you need to trigger events in components that are not related you should use
 Global styles should go in `./client/components/$root/style.styl`. Colors can
 be defined in and loaded from `./client/components/$root/colors.styl`.
 
-#### `$router` Component
-
-The `$router` Component uses [vue-router](https://github.com/vuejs/vue-router/).
-Define your custom routes in `./client/components/$router/index.coffee`. Then
-you just link then with `v-link` and you are set.
-
 #### `page-home` Component
 
 This is a example component and acts as home page. Page-Components are defined
 in the `$router` component. It's recommended to keep the `page-*` convention
 when you create other top-level pages.
+
+#### `routes` Definitions
+
+Routes are made possible by [vue-router](https://github.com/vuejs/vue-router/).
+Define your custom routes in `./client/routes/index.coffee`. Then you just link
+them with `v-link` and you are set.
+
 
 ### [jQuery](https://jquery.com/)
 
