@@ -29,6 +29,7 @@ define ['jquery'], (jQuery) ->
   # require('../bower_components/semantic/dist/components/transition.js')
 
   Vue.use(VueRouter)
+  Vue.mixin(require('./mixins/ajax'))
 
   jQuery ->
     $root   = Vue.extend(require('./components/$root'))

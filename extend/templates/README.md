@@ -30,6 +30,37 @@ Routes are made possible by [vue-router](https://github.com/vuejs/vue-router/).
 Define your custom routes in `./client/routes/index.coffee`. Then you just link
 them with `v-link` and you are set.
 
+#### Mixins
+
+You can extend a Vue.js application with
+[Mixins](http://vuejs.org/guide/mixins.html). They should be stored in
+`./client/mixins`.
+
+##### `$ajax` Mixin
+
+The Mixin `./client/mixins/ajax.coffee` is loaded by the app entry point. It is
+a simple proxy function to make jQuery `$.ajax` calls more pleasant. Call it
+like this:
+
+    @$ajax('get|post|put|delete', dataObject, optionsObject, cb(err, response))
+
+The `dataObject` and `optionsObject` are optional. `optionsObject` would extend
+the options for the `$.ajax` call (see example below). If there is an error,
+`err` would be filled with the `jqXHR` object.
+
+The Mixin is attached to each VM. For example:
+
+module.exports =
+  ready: ->
+    @$ajax 'get', '/accounts', (err, accounts) ->
+      @$data.accounts = accounts
+
+    @$ajax 'post', '/accounts', { username: 'hoy' }, (err, account) ->
+      @$data.accounts.push account
+
+    @$ajax 'delete', '/accounts', { id: 123 }, { beforeSend: -> console.log('before send') }, (err, response) ->
+      console.log 'done', err, response
+
 
 ### [jQuery](https://jquery.com/)
 

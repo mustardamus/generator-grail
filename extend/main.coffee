@@ -9,6 +9,7 @@ module.exports = yeoman.generators.Base.extend
       'client/index.coffee'
       'client/index.styl'
       'client/routes/index.coffee'
+      'client/mixins/ajax.coffee'
       'client/components/$root/index.coffee'
       'client/components/$root/data.coffee'
       'client/components/$root/template.html'
