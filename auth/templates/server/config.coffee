@@ -11,7 +11,7 @@ module.exports =
     url: 'mongodb://localhost/{{name}}'
 
   session:
-    secret: {{sessionSecret}}
+    secret: '{{sessionSecret}}'
 
   auth:
     loginPath   : '/login'

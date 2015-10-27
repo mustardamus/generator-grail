@@ -8,10 +8,10 @@ module.exports = yeoman.generators.Base.extend
     destReadme = @dest.read('README.md')
     srcReadme  = @src.read('README.md')
     filesArr   = [
-      'client/components/$layout/index.coffee'
-      'client/components/$layout/template.html'
+      'client/routes/index.coffee'
       'client/components/$root/index.coffee'
       'client/components/$root/data.coffee'
+      'client/components/$root/template.html'
       'client/components/page-login/index.coffee'
       'client/components/page-login/style.styl'
       'client/components/page-login/template.html'

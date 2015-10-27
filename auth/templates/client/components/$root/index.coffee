@@ -3,13 +3,10 @@ module.exports =
   template: require('./template')
   data    : require('./data')
 
-  components:
-    layout: require('../$layout')
-    router: require('../$router')
+  ready: ->
+    @setHomeActiveState()
 
-  compiled: ->
-    window.data = @$data # to inspect the current state in the browser
-    token       = localStorage.getItem('token')
+    token = localStorage.getItem('token')
 
     if(token)
       @$data.currentToken = token
@@ -24,28 +21,35 @@ module.exports =
         @ajaxSetup()
         @getCurrentUser()
 
-    @$watch 'currentPage', (page) ->
-      if page is 'logout'
+    window.onhashchange = =>
+      if location.hash is '#!/logout'
         @$data.currentToken = null
-        location.hash       = '/'
+        location.hash       = '#!/'
 
   methods:
+    setHomeActiveState: -> # small hack to remove persistent 'active' class
+      homeEl = $('#header a.item.home', @$el)
+
+      if $('#header a.active', @$el).length > 1
+        homeEl.removeClass 'active'
+
+      window.onhashchange = ->
+        if location.hash isnt '#!/'
+          homeEl.removeClass 'active'
+
     ajaxSetup: ->
       $.ajaxSetup
         beforeSend: (jqXHR) =>
           jqXHR.setRequestHeader 'x-access-token', @$data.currentToken
 
     getCurrentUser: ->
-      $.ajax
-        url:      '/users/me'
-        type:     'GET'
-        dataType: 'json'
-        success:  (userData) =>
-          @$data.loggedIn    = true
-          @$data.currentUser = userData
-        error: =>
+      @$ajax 'get', '/users/me', (err, userData) ->
+        if err
           @$data.loggedIn    = false
           @$data.currentUser = null
+        else
+          @$data.loggedIn    = true
+          @$data.currentUser = userData
 
     logout: ->
       localStorage.removeItem 'token'

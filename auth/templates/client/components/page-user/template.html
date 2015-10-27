@@ -51,15 +51,15 @@
       </div>
 
       <div class="submit field">
-        <button class="ui button primary" type="submit" v-on="click:onUpdateClick">
+        <button class="ui button primary" type="submit" v-on:click="onUpdateClick">
           Update
         </button>
 
-        <a class="ui button" v-if="!changePassword" v-on="click:onChangePasswordClick">
+        <a class="ui button" v-if="!changePassword" v-on:click="onChangePasswordClick">
           Change Password
         </a>
 
-        <a class="ui button" v-if="changePassword" v-on="click:onChangePasswordClick">
+        <a class="ui button" v-if="changePassword" v-on:click="onChangePasswordClick">
           Change Infos
         </a>
       </div>

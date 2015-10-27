@@ -3,10 +3,8 @@ module.exports =
   template: require('./template')
 
   data: ->
-    username       : ''
-    password       : ''
-    loginPath      : '/login'
-    successRedirect: '/user'
+    username: ''
+    password: ''
 
   ready: ->
     $('input', @$el).first().focus()
@@ -35,20 +33,14 @@ module.exports =
     loginRequest: ->
       $('form', @$el).addClass 'loading'
 
-      $.ajax
-        url     : @$data.loginPath
-        type    : 'POST'
-        dataType: 'json'
-        data    : { username: @$data.username, password: @$data.password }
-        success : @onLoginSuccess
-        error   : @onLoginError
+      data = { username: @$data.username, password: @$data.password }
 
-    onLoginSuccess: (res) ->
-      $('form', @$el).removeClass 'error loading'
+      @$ajax 'post', '/login', data, (err, response) ->
+        if err
+          $('form', @$el).addClass('error').removeClass('loading')
+          $('input', @$el).first().focus()
+        else
+          $('form', @$el).removeClass 'error loading'
 
-      @$root.$data.currentToken = res.token
-      location.hash             = @$data.successRedirect
-
-    onLoginError: (res) ->
-      $('form', @$el).addClass('error').removeClass('loading')
-      $('input', @$el).first().focus()
+          @$root.$data.currentToken = response.token
+          location.hash             = '#!/user'

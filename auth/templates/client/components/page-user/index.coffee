@@ -3,7 +3,6 @@ module.exports =
   template: require('./template')
 
   data: ->
-    updatePath      : '/users/me'
     currentUser     : @$root.$data.currentUser
     changePassword  : false
     passwordOld     : ''
@@ -88,18 +87,11 @@ module.exports =
 
       $('form', @$el).addClass 'loading'
 
-      $.ajax
-        url     : @$data.updatePath
-        type    : 'POST'
-        dataType: 'json'
-        data    : data
-        success : @onUpdateSuccess
-        error   : @onUpdateError
-
-    resetPasswordFields: ->
-      @$data.passwordOld        = ''
-      @$data.passwordNew        = ''
-      @$data.passwordNewCheck   = ''
+      @$ajax 'post', '/users/me', data, (err, response) ->
+        if err
+          @onUpdateError err
+        else
+          @onUpdateSuccess response
 
     onUpdateSuccess: (res) ->
       @$root.$data.currentUser  = res.user
@@ -120,4 +112,9 @@ module.exports =
         @checkEmptyMail()
 
       if @$data.changePassword
-        $('#password-old').focus()
+        $('#password-old', @$el).focus()
+
+    resetPasswordFields: ->
+      @$data.passwordOld      = ''
+      @$data.passwordNew      = ''
+      @$data.passwordNewCheck = ''
