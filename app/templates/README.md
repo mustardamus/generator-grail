@@ -50,6 +50,8 @@ Browserify:
     components in Browserify
   - [deamdify](https://github.com/jaredhanson/deamdify) - To use AMD modules in
     Browserify
+  - [require-globify](https://github.com/capaj/require-globify) - To require
+    whole directories with globs
 
 ### Styling
 
