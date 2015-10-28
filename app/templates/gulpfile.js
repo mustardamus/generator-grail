@@ -15,6 +15,7 @@ var coffeeify   = require('coffeeify');
 var html2js     = require('html2js-browserify');
 var debowerify  = require('debowerify');
 var deamdify    = require('deamdify');
+var globify     = require('require-globify');
 var watchify    = require('watchify');
 var chokidar    = require('chokidar');
 var browserSync = require('browser-sync');
@@ -34,6 +35,7 @@ var defineBundle = function(entry) {
     extensions: ['.coffee', '.html']
   }).add(entry)
     .transform(coffeeify)
+    .transform(globify)
     .transform(html2js)
     .transform(debowerify)
     .transform(deamdify);

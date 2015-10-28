@@ -1,42 +1,6 @@
 define ['jquery'], (jQuery) ->
   window.jQuery = window.$ = jQuery
-  fastclick     = require('fastclick')
-  Vue           = require('vue')
-  VueRouter     = require('vue-router')
-
-  # comment this out if you don't plan to use socket.io
-  if +location.port is 7891
-    warning   = -> console.log('No Socket.io Server running')
-    window.io = { on: warning, emit: warning }
-  else
-    window.io = require('socket.io-client')()
-
-  # require('../bower_components/semantic/dist/components/accordion.js')
-  # require('../bower_components/semantic/dist/components/checkbox.js')
-  # require('../bower_components/semantic/dist/components/dimmer.js')
-  # require('../bower_components/semantic/dist/components/dropdown.js')
-  # require('../bower_components/semantic/dist/components/embed.js')
-  # require('../bower_components/semantic/dist/components/modal.js')
-  # require('../bower_components/semantic/dist/components/nag.js')
-  # require('../bower_components/semantic/dist/components/popup.js')
-  # require('../bower_components/semantic/dist/components/progress.js')
-  # require('../bower_components/semantic/dist/components/rating.js')
-  # require('../bower_components/semantic/dist/components/search.js')
-  # require('../bower_components/semantic/dist/components/shape.js')
-  # require('../bower_components/semantic/dist/components/sidebar.js')
-  # require('../bower_components/semantic/dist/components/sticky.js')
-  # require('../bower_components/semantic/dist/components/tab.js')
-  # require('../bower_components/semantic/dist/components/transition.js')
-
-  Vue.use(VueRouter)
-  Vue.mixin(require('./mixins/ajax'))
 
   jQuery ->
-    $root   = Vue.extend(require('./components/$root'))
-    $router = new VueRouter({ linkActiveClass: 'active' })
-
-    $('<div/>', { id: 'app' }).appendTo 'body'
-    $router.map require('./routes')
-    $router.start $root, '#app'
-
-    fastclick(document.body)
+    for n, initFunc of require('./initialize/*.coffee', { mode: 'hash' })
+      initFunc.call @

@@ -1,5 +1,19 @@
 ## Client Extensions
 
+### Initializers
+
+Every `*.coffee` file from the directory `./client/initialize` is loaded and
+executed, which makes it easy to plug new third party libraries in and out of
+the application.
+
+A Initializer must return a function that can be called, for example:
+
+    fastclick = require('fastclick')
+
+    module.exports = ->
+      fastclick(document.body)
+
+
 ### [Vue.js](http://vuejs.org/guide/)
 
 #### `$root` Component
