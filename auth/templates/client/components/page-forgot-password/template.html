@@ -1,0 +1,20 @@
+<div class="page-forgot-password">
+  <form class="ui form">
+    <div class="ui error message">
+      <p>{{errorMessage}}</p>
+    </div>
+
+    <div class="ui success message">
+      <p>Reset E-Mail has been sent to {{email}}</p>
+    </div>
+
+    <div class="field" id="email-field">
+      <label for="username">E-Mail</label>
+      <input type="text" v-model="email" id="email-field" placeholder="your@mail.com">
+    </div>
+
+    <button class="ui button primary" type="submit" v-on:click.prevent="onResetClick">
+      Send Reset Link
+    </button>
+  </form>
+</div>

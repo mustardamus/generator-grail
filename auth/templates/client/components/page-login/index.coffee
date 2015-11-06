@@ -10,9 +10,8 @@ module.exports =
     $('input', @$el).first().focus()
 
   methods:
-    onLoginClick: (e) ->
+    onLoginClick: ->
       @loginRequest() if @validateForm()
-      e.preventDefault()
 
     validateForm: ->
       valid = true

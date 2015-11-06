@@ -34,9 +34,8 @@ module.exports =
           @checkEmptyMail()
       , 100
 
-    onUpdateClick: (e) ->
+    onUpdateClick: ->
       @updateRequest() if @validateForm()
-      e.preventDefault()
 
     isValidEmail: (email) ->
       re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i

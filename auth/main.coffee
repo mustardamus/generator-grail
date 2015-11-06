@@ -21,9 +21,16 @@ module.exports = yeoman.generators.Base.extend
       'client/components/page-user/index.coffee'
       'client/components/page-user/style.styl'
       'client/components/page-user/template.html'
+      'client/components/page-forgot-password/index.coffee'
+      'client/components/page-forgot-password/style.styl'
+      'client/components/page-forgot-password/template.html'
+      'client/components/page-reset-password/index.coffee'
+      'client/components/page-reset-password/style.styl'
+      'client/components/page-reset-password/template.html'
       'server/helpers/bcrypt.coffee'
       'server/helpers/token.coffee'
       'server/helpers/validate.coffee'
+      'server/helpers/email.coffee'
       'server/middleware/auth.coffee'
       'server/models/user.coffee'
       'server/routes/auth.coffee'
@@ -47,7 +54,7 @@ module.exports = yeoman.generators.Base.extend
   install:
     npmInstall: ->
       done = @async()
-      @npmInstall ['bcrypt', 'jsonwebtoken'], { save: true }, done
+      @npmInstall ['bcrypt', 'jsonwebtoken', 'mailcomposer', 'mailgun-js'], { save: true }, done
 
   end: ->
     @log chalk.yellow('\nAight. Happy logging in!')

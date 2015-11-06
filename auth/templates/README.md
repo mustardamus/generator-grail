@@ -11,7 +11,11 @@ password-strength and e-mail confirmation.
 
 This is a custom implementation with
 [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) and
-[bcrypt](https://github.com/ncb000gt/node.bcrypt.js).
+[bcrypt](https://github.com/ncb000gt/node.bcrypt.js). Resetting the password via
+E-Mail is handled with [mailcomposer](https://github.com/andris9/mailcomposer)
+and (mailgun-js)[https://github.com/1lobby/mailgun-js]. Sent via the API at
+[Mailgun](https://www.mailgun.com/) (please enter the domain and key in
+`./server/config.coffee`).
 
 #### `POST /register`
 
@@ -33,6 +37,17 @@ This route will return the information of the current logged in user.
 On this route a user can update her information: username, e-mail and password.
 It is checked if the username and e-mail already exists. To change the password
 the user must provide the current password.
+
+#### `POST /forgot-password`
+
+This will send a reset E-Mail to the provided E-Mail address. The E-Mail
+contains a link back to the application where the user can enter a new password.
+
+#### `POST /reset-password`
+
+This will reset the password for the requested token. The token is decoded, and
+the password for the user is updated. The token will expire in 30 minutes, you
+can change that in the `./server/config.coffee`.
 
 #### `auth` Middleware
 
@@ -69,6 +84,18 @@ On this page a user can see and edit her information. If the e-mail is missing,
 a extra message is displayed saying to provide a e-mail. Form validation is
 happening on the client-side. To change the password the current password must
 be provided.
+
+#### `/#/forgot-password`
+
+On this page a user can enter her E-Mail address to get a link sent to reset the
+password.
+
+#### `/#/reset-password/:token`
+
+This is where the user will arrive when following the link in the reset E-Mail.
+On this page the user can reset his password, if the token is valid, the
+password is updated in the database and the user have to login with his new
+password.
 
 #### Determine if a user is logged in
 

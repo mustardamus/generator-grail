@@ -14,3 +14,11 @@ module.exports =
   '/user':
     name     : 'user'
     component: require('../components/page-user')
+
+  '/forgot-password':
+    name     : 'forgot-password'
+    component: require('../components/page-forgot-password')
+
+  '/reset-password/:token':
+    name     : 'reset-password'
+    component: require('../components/page-reset-password')

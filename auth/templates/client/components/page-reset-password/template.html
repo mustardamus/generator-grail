@@ -1,0 +1,33 @@
+<div class="page-reset-password">
+  <form class="ui form" v-if="!resetted">
+    <div class="ui error message">
+      <p>{{errorMessage}}</p>
+    </div>
+
+    <div class="field" id="password-field">
+      <label for="password">New Password</label>
+      <input type="password" v-model="password" id="password" placeholder="Password">
+    </div>
+
+    <div class="field" id="password-check-field">
+      <label for="password-check">New Password Check</label>
+      <input type="password" v-model="passwordCheck" id="password-check" placeholder="Password Check">
+    </div>
+
+    <button class="ui button primary" type="submit" v-on:click.prevent="onResetClick">
+      Reset Password
+    </button>
+  </form>
+
+  <div class="ui icon message success" v-if="resetted">
+    <i class="privacy icon"></i>
+    <div class="content">
+      <div class="header">
+        Phew! {{username}}, your password has been reset.
+      </div>
+      <p>
+        Please <a v-link="{ name: 'login' }">Login</a> again.
+      </p>
+    </div>
+  </div>
+</div>

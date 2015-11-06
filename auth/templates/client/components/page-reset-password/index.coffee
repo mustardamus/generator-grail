@@ -3,23 +3,22 @@ module.exports =
   template: require('./template')
 
   data: ->
-    username     : ''
+    token        : @$route.params.token
+    errorMessage : ''
     password     : ''
     passwordCheck: ''
+    username     : ''
+    resetted     : false
 
   ready: ->
     $('input', @$el).first().focus()
 
   methods:
-    onRegisterClick: ->
-      @registerRequest() if @validateForm()
+    onResetClick: ->
+      @resetRequest() if @validateForm()
 
     validateForm: ->
       valid = true
-
-      if $.trim(@$data.username).length is 0
-        valid = false
-        $('#username-field', @$el).addClass 'error'
 
       if $.trim(@$data.password).length is 0
         valid = false
@@ -34,17 +33,20 @@ module.exports =
 
       valid
 
-    registerRequest: ->
+    resetRequest: ->
       $('form', @$el).addClass 'loading'
 
-      data = { username: @$data.username, password: @$data.password }
+      data = { password: @$data.password, token: @$data.token }
 
-      @$ajax 'post', '/register', data, (err, response) ->
+      @$ajax 'post', '/reset-password', data, (err, response) ->
         if err
           $('form', @$el).addClass('error').removeClass('loading')
           $('input', @$el).first().focus()
+
+          @$data.errorMessage = err.responseJSON.message
         else
           $('form', @$el).removeClass 'error loading'
 
-          @$root.$data.currentToken = response.token
-          location.hash             = '#!/user'
+          @$root.$data.currentToken = null
+          @$data.username           = response.username
+          @$data.resetted           = true

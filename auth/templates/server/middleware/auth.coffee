@@ -9,7 +9,7 @@ module.exports = (config, helpers, models) ->
       return res.status(403).send({ message: config.auth.messages.invalidToken }) if(err)
 
       models.user.findOne { username: user.username }, (err, user) ->
-        return res.status(403).send({ message: config.auth.messages.userFindError }) if(err)
+        return res.status(403).send({ message: config.auth.messages.userNotFound }) if(err)
 
         req.user = user
         next()
